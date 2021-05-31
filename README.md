@@ -7,12 +7,19 @@ npm i zx-extra
 ```
 
 ## Usage
-### ``$.noquote`command` ``
-Runs target cmd with disabled `shq`.
+### ``$.raw`command` ``
+Evaluates target cmd as is with disabled `shq`.
 ```js
 const cmd = 'echo foo'
 const msg = 'bar'
-const output = (await $.noquote`${cmd} ${msg}`).toString().trim()
+const output = (await $.raw`${cmd} ${msg}`).toString().trim()
 // $ echo foo bar
+```
+
+### ``$.silent`command` ``
+Sets `verbose = false` for once invocation.
+```js
+await $.silent`echo foo`
+// <no output in console>
 ```
 

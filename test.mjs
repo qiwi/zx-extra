@@ -1,8 +1,14 @@
 import {strict as assert} from 'assert'
 
+// $.raw
 {
   const cmd = 'echo foo'
   const msg = 'bar'
-  const output = (await $.noquote`${cmd} ${msg}`).toString().trim()
+  const output = (await $.raw`${cmd} ${msg}`).toString().trim()
   assert(output === 'foo bar')
+}
+
+// $.silent
+{
+  await $.silent`echo foo`
 }
