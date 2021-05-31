@@ -17,3 +17,9 @@ import {strict as assert} from 'assert'
 {
   assert(typeof $.fs.ensureDirSync === 'function')
 }
+
+// argv / minimist
+{
+  assert(typeof argv === 'object')
+  console.log(argv)
+}

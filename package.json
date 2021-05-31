@@ -1,6 +1,6 @@
 {
   "name": "zx-extra",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "zx with some useful extras",
   "main": "index.mjs",
   "bin": {
@@ -10,7 +10,9 @@
     "test": "node cli.mjs test.mjs"
   },
   "files": [
-    "*.mjs"
+    "*.mjs",
+    "README.md",
+    "LICENSE"
   ],
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
   "homepage": "https://github.com/qiwi/zx-extra#readme",
   "dependencies": {
     "fs-extra": "^10.0.0",
+    "minimist": "^1.2.5",
     "zx": "^1.14.1"
   }
 }

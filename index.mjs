@@ -1,5 +1,8 @@
 import {$} from 'zx'
 import fs from 'fs-extra'
+import minimist from 'minimist'
+
+const argv = minimist(process.argv.slice(2))
 
 $.fs = {...$.fs, ...fs}
 $.raw = async (...args) => {
@@ -22,4 +25,5 @@ $.silent = async (...args) => {
 
 Object.assign(global, {
   fs: $.fs,
+  argv
 })

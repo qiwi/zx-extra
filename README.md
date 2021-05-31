@@ -23,6 +23,13 @@ await $.silent`echo foo`
 // <no output in console>
 ```
 
-### `` $.fs ``
+### `` $.fs / global.fs ``
 Refers to [fs-extra](https://www.npmjs.com/package/fs-extra) instead of standard Node.js `fs` module.
 
+### `` global.argv ``
+Represents parsed with [minimist](https://www.npmjs.com/package/minimist) script arguments
+```js
+// zx-extra test.mjs --foo=bar
+argv
+{ _: [ 'test.mjs' ], foo: 'bar' }
+```
