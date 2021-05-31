@@ -1,5 +1,5 @@
 # zx-extra
-zx with some useful extras
+[zx](https://github.com/google/zx) with some useful extras
 
 ## Install
 ```shell
@@ -22,4 +22,7 @@ Sets `verbose = false` for once invocation.
 await $.silent`echo foo`
 // <no output in console>
 ```
+
+### `` $.fs ``
+Refers to [fs-extra](https://www.npmjs.com/package/fs-extra) instead of standard Node.js `fs` module.
 
