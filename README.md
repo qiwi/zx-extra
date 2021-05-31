@@ -25,6 +25,9 @@ await $.silent`echo foo`
 
 ### `` $.fs / global.fs ``
 Refers to [fs-extra](https://www.npmjs.com/package/fs-extra) instead of standard Node.js `fs` module.
+```js
+await fs.copy('/tmp/myfile', '/tmp/mynewfile')
+```
 
 ### `` global.argv ``
 Represents parsed with [minimist](https://www.npmjs.com/package/minimist) script arguments
