@@ -8,19 +8,17 @@ $.fs = {...$.fs, ...fs}
 $.raw = async (...args) => {
   const q = $.quote
   $.quote = v => v
-  const p = $(...args)
-  await p
-  $.quote = q
-  return p
+  try {
+    return $(...args)
+  } finally {
+    $.quote = q
+  }
 }
 
 $.silent = async (...args) => {
   const v = $.verbose
   $.verbose = false
-  const p = $(...args)
-  await p
-  $.verbose = v
-  return p
+  return $(...args).finally(() => {$.verbose = v})
 }
 
 Object.assign(global, {
