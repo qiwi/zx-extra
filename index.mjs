@@ -1,5 +1,7 @@
 import {$} from 'zx'
+import fs from 'fs-extra'
 
+$.fs = {...$.fs, ...fs}
 $.raw = async (...args) => {
   const q = $.quote
   $.quote = v => v
@@ -17,3 +19,7 @@ $.silent = async (...args) => {
   $.verbose = v
   return p
 }
+
+Object.assign(global, {
+  fs: $.fs,
+})

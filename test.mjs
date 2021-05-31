@@ -12,3 +12,8 @@ import {strict as assert} from 'assert'
 {
   await $.silent`echo foo`
 }
+
+// fs-extra
+{
+  assert(typeof $.fs.ensureDirSync === 'function')
+}
