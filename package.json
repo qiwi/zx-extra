@@ -1,13 +1,16 @@
 {
   "name": "zx-extra",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "zx with some useful extras",
   "main": "index.mjs",
   "bin": {
     "zx-extra": "./cli.mjs"
   },
   "scripts": {
-    "test": "node cli.mjs test.mjs"
+    "test": "node cli.mjs test.mjs",
+    "publish": "npm publish --no-git-tag-version",
+    "publish:beta": "npm publish --no-git-tag-version --tag beta",
+    "publish:rc": "npm publish --no-git-tag-version --tag rc"
   },
   "files": [
     "*.mjs",
