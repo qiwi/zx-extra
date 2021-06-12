@@ -18,6 +18,7 @@ $.raw = async (...args) => {
 $.silent = async (...args) => {
   const v = $.verbose
   $.verbose = false
+  // https://github.com/google/zx/pull/134
   return $(...args).finally(() => {$.verbose = v})
 }
 

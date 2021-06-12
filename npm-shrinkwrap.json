@@ -8,6 +8,7 @@
       "version": "0.0.2",
       "license": "MIT",
       "dependencies": {
+        "@types/node": "^15.12.2",
         "fs-extra": "^10.0.0",
         "minimist": "^1.2.5",
         "zx": "^1.14.1"
@@ -17,9 +18,9 @@
       }
     },
     "node_modules/@types/node": {
-      "version": "15.6.1",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-15.6.1.tgz",
-      "integrity": "sha512-7EIraBEyRHEe7CH+Fm1XvgqU6uwZN8Q7jppJGcqjROMT29qhAuuOxYB1uEY5UMYQKEmA5D+5tBnhdaPXSsLONA=="
+      "version": "15.12.2",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-15.12.2.tgz",
+      "integrity": "sha512-zjQ69G564OCIWIOHSXyQEEDpdpGl+G348RAKY0XXy9Z5kU9Vzv1GMNnkar/ZJ8dzXB3COzD9Mo9NtRZ4xfgUww=="
     },
     "node_modules/@types/node-fetch": {
       "version": "2.5.10",
@@ -246,9 +247,9 @@
   },
   "dependencies": {
     "@types/node": {
-      "version": "15.6.1",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-15.6.1.tgz",
-      "integrity": "sha512-7EIraBEyRHEe7CH+Fm1XvgqU6uwZN8Q7jppJGcqjROMT29qhAuuOxYB1uEY5UMYQKEmA5D+5tBnhdaPXSsLONA=="
+      "version": "15.12.2",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-15.12.2.tgz",
+      "integrity": "sha512-zjQ69G564OCIWIOHSXyQEEDpdpGl+G348RAKY0XXy9Z5kU9Vzv1GMNnkar/ZJ8dzXB3COzD9Mo9NtRZ4xfgUww=="
     },
     "@types/node-fetch": {
       "version": "2.5.10",

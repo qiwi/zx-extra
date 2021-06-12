@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/qiwi/zx-extra#readme",
   "dependencies": {
+    "@types/node": "^15.12.2",
     "fs-extra": "^10.0.0",
     "minimist": "^1.2.5",
     "zx": "^1.14.1"
