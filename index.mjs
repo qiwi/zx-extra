@@ -1,10 +1,7 @@
 import {$} from 'zx'
-import fs from 'fs-extra'
-import minimist from 'minimist'
 
-const argv = minimist(process.argv.slice(2))
+export * from 'zx'
 
-$.fs = {...$.fs, ...fs}
 $.raw = async (...args) => {
   const q = $.quote
   $.quote = v => v
@@ -21,8 +18,3 @@ $.silent = async (...args) => {
   // https://github.com/google/zx/pull/134
   return $(...args).finally(() => {$.verbose = v})
 }
-
-Object.assign(global, {
-  fs: $.fs,
-  argv
-})

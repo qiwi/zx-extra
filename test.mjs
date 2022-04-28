@@ -1,4 +1,6 @@
-import {strict as assert} from 'assert'
+import {$} from './index.mjs'
+
+import {strict as assert} from 'node:assert'
 
 // $.raw
 {
@@ -15,7 +17,7 @@ import {strict as assert} from 'assert'
 
 // fs-extra
 {
-  assert(typeof $.fs.ensureDirSync === 'function')
+  assert(typeof fs.ensureDirSync === 'function')
 }
 
 // argv / minimist
