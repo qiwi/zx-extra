@@ -1,6 +1,5 @@
-import {$, semver, createHook} from '../../main/js/index.mjs'
-
 import {strict as assert} from 'node:assert'
+import {$, semver, createHook} from '../../main/js/index.mjs'
 
 // $.raw
 {
@@ -37,6 +36,7 @@ import {strict as assert} from 'node:assert'
   const nothrow = $.opt({nothrow: true})
   const thrown = await nothrow`foo bar`
 
+  assert($.opt === $.o)
   assert(/foo: command not found/.test(thrown.stderr.toString()))
 }
 
@@ -83,4 +83,3 @@ import {strict as assert} from 'node:assert'
   }
 }
 
-process.exit(0)

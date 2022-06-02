@@ -14,10 +14,8 @@ $.raw = async (...args) => {
   }
 }
 
-$.silent = async (...args) => {
-  // https://github.com/google/zx/pull/134
-  return quiet($(...args))
-}
+// https://github.com/google/zx/pull/134
+$.silent = async (...args) => quiet($(...args))
 
 $.o = $.opt =
   (opts) =>

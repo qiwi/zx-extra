@@ -61,7 +61,7 @@ jobs:
 
       - name: Run tests
         timeout-minutes: 2
-        run: npm run test
+        run: npm test
 
   release:
     name: Release
