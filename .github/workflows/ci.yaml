@@ -56,6 +56,9 @@ jobs:
       - name: Install deps
         run: npm i
 
+      - if: matrix.os == 'windows-2019'
+        run: npm i -g npm
+
       - name: Run tests
         timeout-minutes: 1
         run: npm run test
