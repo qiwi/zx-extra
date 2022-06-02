@@ -1,18 +1,18 @@
-import {$} from './index.mjs'
+import {$} from '../../main/js/index.mjs'
 
 import {strict as assert} from 'node:assert'
 
 // $.raw
 {
-  const cmd = 'echo foo'
+  const cmd = 'echo raw foo'
   const msg = 'bar'
   const output = (await $.raw`${cmd} ${msg}`).toString().trim()
-  assert(output === 'foo bar')
+  assert(output === 'raw foo bar')
 }
 
 // $.silent
 {
-  await $.silent`echo foo`
+  await $.silent`echo silent`
 }
 
 // fs-extra

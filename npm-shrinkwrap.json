@@ -9,11 +9,11 @@
       "version": "0.0.4",
       "license": "MIT",
       "dependencies": {
-        "@types/node": "^17.0.26",
-        "zx": "^6.1.0"
+        "@types/node": "^17.0.38",
+        "zx": "^6.2.0"
       },
       "bin": {
-        "zx-extra": "cli.mjs"
+        "zx-extra": "src/main/js/cli.mjs"
       }
     },
     "node_modules/@nodelib/fs.scandir": {
@@ -62,9 +62,14 @@
       "integrity": "sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ=="
     },
     "node_modules/@types/node": {
-      "version": "17.0.26",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-17.0.26.tgz",
-      "integrity": "sha512-z/FG/6DUO7pnze3AE3TBGIjGGKkvCcGcWINe1C7cADY8hKLJPDYpzsNE37uExQ4md5RFtTCvg+M8Mu1Enyeg2A=="
+      "version": "17.0.38",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-17.0.38.tgz",
+      "integrity": "sha512-5jY9RhV7c0Z4Jy09G+NIDTsCZ5G0L5n+Z+p+Y7t5VJHM30bgwzSjVtlcBxqAj+6L/swIlvtOSzr8rBk/aNyV2g=="
+    },
+    "node_modules/@types/ps-tree": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@types/ps-tree/-/ps-tree-1.1.2.tgz",
+      "integrity": "sha512-ZREFYlpUmPQJ0esjxoG1fMvB2HNaD3z+mjqdSosZvd3RalncI9NEur73P8ZJz4YQdL64CmV1w0RuqoRUlhQRBw=="
     },
     "node_modules/@types/which": {
       "version": "2.0.1",
@@ -350,9 +355,9 @@
       }
     },
     "node_modules/node-fetch": {
-      "version": "3.2.3",
-      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-3.2.3.tgz",
-      "integrity": "sha512-AXP18u4pidSZ1xYXRDPY/8jdv3RAozIt/WLNR/MBGZAz+xjtlr90RvCnsvHQRiXyWliZF/CpytExp32UU67/SA==",
+      "version": "3.2.5",
+      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-3.2.5.tgz",
+      "integrity": "sha512-u7zCHdJp8JXBwF09mMfo2CL6kp37TslDl1KP3hRGTlCInBtag+UO3LGVy+NF0VzvnL3PVMpA2hXh1EtECFnyhQ==",
       "dependencies": {
         "data-uri-to-buffer": "^4.0.0",
         "fetch-blob": "^3.1.4",
@@ -534,33 +539,35 @@
       }
     },
     "node_modules/yaml": {
-      "version": "2.0.1",
-      "resolved": "https://registry.npmjs.org/yaml/-/yaml-2.0.1.tgz",
-      "integrity": "sha512-1NpAYQ3wjzIlMs0mgdBmYzLkFgWBIWrzYVDYfrixhoFNNgJ444/jT2kUT2sicRbJES3oQYRZugjB6Ro8SjKeFg==",
+      "version": "2.1.1",
+      "resolved": "https://registry.npmjs.org/yaml/-/yaml-2.1.1.tgz",
+      "integrity": "sha512-o96x3OPo8GjWeSLF+wOAbrPfhFOGY0W00GNaxCDv+9hkcDJEnev1yh8S7pgHF0ik6zc8sQLuL8hjHjJULZp8bw==",
       "engines": {
         "node": ">= 14"
       }
     },
     "node_modules/zx": {
-      "version": "6.1.0",
-      "resolved": "https://registry.npmjs.org/zx/-/zx-6.1.0.tgz",
-      "integrity": "sha512-LcvyN946APdktLPm1ta4wfNiJaDuq1iHOTDwApP69ug5hNYWzMYaVMC5Ek6Ny4nnSLpJ6wdY42feR/2LY5/nVA==",
+      "version": "6.2.0",
+      "resolved": "https://registry.npmjs.org/zx/-/zx-6.2.0.tgz",
+      "integrity": "sha512-g7M/j+Jgw0XVpuX0VyW5vHctU/G7Q2/xb0yysyaTS37Iv39s9Fxn1QvLePVt/QnQSkfNPqeYzsqST1+sRG5Jaw==",
       "dependencies": {
         "@types/fs-extra": "^9.0.13",
         "@types/minimist": "^1.2.2",
         "@types/node": "^17.0",
+        "@types/ps-tree": "^1.1.2",
         "@types/which": "^2.0.1",
         "chalk": "^5.0.1",
-        "fs-extra": "^10.0.1",
+        "fs-extra": "^10.1.0",
         "globby": "^13.1.1",
+        "ignore": "^5.2.0",
         "minimist": "^1.2.6",
-        "node-fetch": "^3.2.3",
+        "node-fetch": "^3.2.4",
         "ps-tree": "^1.2.0",
         "which": "^2.0.2",
-        "yaml": "^2.0.0"
+        "yaml": "^2.1.1"
       },
       "bin": {
-        "zx": "zx.mjs"
+        "zx": "build/cli.js"
       },
       "engines": {
         "node": ">= 16.0.0"
@@ -605,9 +612,14 @@
       "integrity": "sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ=="
     },
     "@types/node": {
-      "version": "17.0.26",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-17.0.26.tgz",
-      "integrity": "sha512-z/FG/6DUO7pnze3AE3TBGIjGGKkvCcGcWINe1C7cADY8hKLJPDYpzsNE37uExQ4md5RFtTCvg+M8Mu1Enyeg2A=="
+      "version": "17.0.38",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-17.0.38.tgz",
+      "integrity": "sha512-5jY9RhV7c0Z4Jy09G+NIDTsCZ5G0L5n+Z+p+Y7t5VJHM30bgwzSjVtlcBxqAj+6L/swIlvtOSzr8rBk/aNyV2g=="
+    },
+    "@types/ps-tree": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@types/ps-tree/-/ps-tree-1.1.2.tgz",
+      "integrity": "sha512-ZREFYlpUmPQJ0esjxoG1fMvB2HNaD3z+mjqdSosZvd3RalncI9NEur73P8ZJz4YQdL64CmV1w0RuqoRUlhQRBw=="
     },
     "@types/which": {
       "version": "2.0.1",
@@ -811,9 +823,9 @@
       "integrity": "sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ=="
     },
     "node-fetch": {
-      "version": "3.2.3",
-      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-3.2.3.tgz",
-      "integrity": "sha512-AXP18u4pidSZ1xYXRDPY/8jdv3RAozIt/WLNR/MBGZAz+xjtlr90RvCnsvHQRiXyWliZF/CpytExp32UU67/SA==",
+      "version": "3.2.5",
+      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-3.2.5.tgz",
+      "integrity": "sha512-u7zCHdJp8JXBwF09mMfo2CL6kp37TslDl1KP3hRGTlCInBtag+UO3LGVy+NF0VzvnL3PVMpA2hXh1EtECFnyhQ==",
       "requires": {
         "data-uri-to-buffer": "^4.0.0",
         "fetch-blob": "^3.1.4",
@@ -917,27 +929,29 @@
       }
     },
     "yaml": {
-      "version": "2.0.1",
-      "resolved": "https://registry.npmjs.org/yaml/-/yaml-2.0.1.tgz",
-      "integrity": "sha512-1NpAYQ3wjzIlMs0mgdBmYzLkFgWBIWrzYVDYfrixhoFNNgJ444/jT2kUT2sicRbJES3oQYRZugjB6Ro8SjKeFg=="
+      "version": "2.1.1",
+      "resolved": "https://registry.npmjs.org/yaml/-/yaml-2.1.1.tgz",
+      "integrity": "sha512-o96x3OPo8GjWeSLF+wOAbrPfhFOGY0W00GNaxCDv+9hkcDJEnev1yh8S7pgHF0ik6zc8sQLuL8hjHjJULZp8bw=="
     },
     "zx": {
-      "version": "6.1.0",
-      "resolved": "https://registry.npmjs.org/zx/-/zx-6.1.0.tgz",
-      "integrity": "sha512-LcvyN946APdktLPm1ta4wfNiJaDuq1iHOTDwApP69ug5hNYWzMYaVMC5Ek6Ny4nnSLpJ6wdY42feR/2LY5/nVA==",
+      "version": "6.2.0",
+      "resolved": "https://registry.npmjs.org/zx/-/zx-6.2.0.tgz",
+      "integrity": "sha512-g7M/j+Jgw0XVpuX0VyW5vHctU/G7Q2/xb0yysyaTS37Iv39s9Fxn1QvLePVt/QnQSkfNPqeYzsqST1+sRG5Jaw==",
       "requires": {
         "@types/fs-extra": "^9.0.13",
         "@types/minimist": "^1.2.2",
         "@types/node": "^17.0",
+        "@types/ps-tree": "^1.1.2",
         "@types/which": "^2.0.1",
         "chalk": "^5.0.1",
-        "fs-extra": "^10.0.1",
+        "fs-extra": "^10.1.0",
         "globby": "^13.1.1",
+        "ignore": "^5.2.0",
         "minimist": "^1.2.6",
-        "node-fetch": "^3.2.3",
+        "node-fetch": "^3.2.4",
         "ps-tree": "^1.2.0",
         "which": "^2.0.2",
-        "yaml": "^2.0.0"
+        "yaml": "^2.1.1"
       }
     }
   }
