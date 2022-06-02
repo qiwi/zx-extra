@@ -1,3 +1,12 @@
+## [1.1.0](https://github.com/qiwi/zx-extra/compare/v1.0.0...v1.1.0) (2022-06-02)
+
+### Fixes & improvements
+* docs: formatting ([9adcc43](https://github.com/qiwi/zx-extra/commit/9adcc43c91038732928c3a2a31de7db6d899e2ef))
+* docs: mention license ([19a0869](https://github.com/qiwi/zx-extra/commit/19a0869105699b923955791e07b6c97b1a7f9880))
+
+### Features
+* feat: add createHook helper ([178b4e7](https://github.com/qiwi/zx-extra/commit/178b4e7e25d3588e2ca33a429e50ee06b9ccbe5c))
+
 ## [1.0.0](https://github.com/qiwi/zx-extra/compare/undefined...v1.0.0) (2022-06-02)
 
 ### Features
@@ -14,5 +23,3 @@
 * refactor: use promise finally silent hook ([52c628a](https://github.com/qiwi/zx-extra/commit/52c628ab7089a03f905735a0c070e0e2bd44651d))
 * docs(readme): add fs-extra usage example ([dc4608a](https://github.com/qiwi/zx-extra/commit/dc4608abb765c384c078f58fe0802a2e5ccbb4a2))
 * docs(readme): formatting ([fb0a9ff](https://github.com/qiwi/zx-extra/commit/fb0a9ff1a8a7e7edf44a8bf6471947e7f072bd2c))
-
-
