@@ -1,5 +1,5 @@
 # 🦪 zx-extra
-[zx](https://github.com/google/zx) with some out-of-scope extras.
+[zx](https://github.com/google/zx) with some extras
 
 ## Install
 ```shell
