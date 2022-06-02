@@ -1,3 +1,8 @@
+## [1.2.0](https://github.com/qiwi/zx-extra/compare/v1.1.0...v1.2.0) (2022-06-02)
+
+### Features
+* feat: assert configurable hooks opts ([768c653](https://github.com/qiwi/zx-extra/commit/768c6539899e0e2bd728d96c44b085be293608fc))
+
 ## [1.1.0](https://github.com/qiwi/zx-extra/compare/v1.0.0...v1.1.0) (2022-06-02)
 
 ### Fixes & improvements
