@@ -101,5 +101,5 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_COMMITTER_EMAIL: 'opensource@qiwi.com'
-          GIT_COMMITTER_NAME: '@qiwibot'
+          GIT_COMMITTER_NAME: 'qiwibot'
         run: npm_config_yes=true npx zx-semrel
