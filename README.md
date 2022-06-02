@@ -88,3 +88,6 @@ Represents parsed with [minimist](https://www.npmjs.com/package/minimist) script
 argv
 { _: [ 'test.mjs' ], foo: 'bar' }
 ```
+
+### License
+[MIT](./LICENSE)
