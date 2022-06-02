@@ -1,5 +1,6 @@
 import {$, quiet} from 'zx'
 
+export { semver } from './semver.mjs'
 export * from 'zx'
 
 $.raw = async (...args) => {

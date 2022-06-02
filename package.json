@@ -36,6 +36,7 @@
   "homepage": "https://github.com/qiwi/zx-extra#readme",
   "dependencies": {
     "@types/node": "^17.0.38",
-    "zx": "^6.2.0"
+    "zx": "^6.2.0",
+    "@types/semver": "^7.3.9"
   }
 }

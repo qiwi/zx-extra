@@ -1,4 +1,4 @@
-import {$} from '../../main/js/index.mjs'
+import {$, semver} from '../../main/js/index.mjs'
 
 import {strict as assert} from 'node:assert'
 
@@ -24,4 +24,9 @@ import {strict as assert} from 'node:assert'
 {
   assert(typeof argv === 'object')
   console.log(argv)
+}
+
+{
+  assert(semver.gte('1.0.1', '1.0.0'))
+  assert(!semver.lt('1.0.0', '1.0.0'))
 }

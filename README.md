@@ -11,6 +11,17 @@ yarn add zx-extra
 ```
 
 ## Usage
+Inherits zx, so all origin methods are available.
+
+## Extras
+
+### `semver`
+Semantic versioning api from [node-semver](https://github.com/npm/node-semver)
+```js
+import {semver} from 'zx-extra'
+
+semver.gte('1.0.1', '1.0.0')
+```
 
 ### `$.raw`
 Evaluates target cmd as is without `shq`.

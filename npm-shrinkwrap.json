@@ -10,6 +10,7 @@
       "license": "MIT",
       "dependencies": {
         "@types/node": "^17.0.38",
+        "@types/semver": "^7.3.9",
         "zx": "^6.2.0"
       },
       "bin": {
@@ -70,6 +71,11 @@
       "version": "1.1.2",
       "resolved": "https://registry.npmjs.org/@types/ps-tree/-/ps-tree-1.1.2.tgz",
       "integrity": "sha512-ZREFYlpUmPQJ0esjxoG1fMvB2HNaD3z+mjqdSosZvd3RalncI9NEur73P8ZJz4YQdL64CmV1w0RuqoRUlhQRBw=="
+    },
+    "node_modules/@types/semver": {
+      "version": "7.3.9",
+      "resolved": "https://registry.npmjs.org/@types/semver/-/semver-7.3.9.tgz",
+      "integrity": "sha512-L/TMpyURfBkf+o/526Zb6kd/tchUP3iBDEPjqjb+U2MAJhVRxxrmr2fwpe08E7QsV7YLcpq0tUaQ9O9x97ZIxQ=="
     },
     "node_modules/@types/which": {
       "version": "2.0.1",
@@ -620,6 +626,11 @@
       "version": "1.1.2",
       "resolved": "https://registry.npmjs.org/@types/ps-tree/-/ps-tree-1.1.2.tgz",
       "integrity": "sha512-ZREFYlpUmPQJ0esjxoG1fMvB2HNaD3z+mjqdSosZvd3RalncI9NEur73P8ZJz4YQdL64CmV1w0RuqoRUlhQRBw=="
+    },
+    "@types/semver": {
+      "version": "7.3.9",
+      "resolved": "https://registry.npmjs.org/@types/semver/-/semver-7.3.9.tgz",
+      "integrity": "sha512-L/TMpyURfBkf+o/526Zb6kd/tchUP3iBDEPjqjb+U2MAJhVRxxrmr2fwpe08E7QsV7YLcpq0tUaQ9O9x97ZIxQ=="
     },
     "@types/which": {
       "version": "2.0.1",
