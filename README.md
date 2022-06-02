@@ -32,6 +32,39 @@ const output = (await $.raw`${cmd} ${msg}`).toString().trim()
 // $ echo foo bar
 ```
 
+### `$.opt`
+Returns `$` with the specified preset.
+```js
+const $$ = $.opt({verbose: false, spawn: customSpawn})
+
+await $$`foo 'bar'`
+```
+
+### `createHook`
+Helper to create chainable extras.
+```js
+const quiet = createHook({ verbose: false }, 'quiet')
+const timeout = createHook(
+  null,
+  'timeout',
+  (p, t, signal) => {
+    if (!t) return p
+    let timer = setTimeout(() => p.kill(signal), t)
+
+    return Object.assign(
+      p.finally(() => clearTimeout(timer)),
+      p
+    )
+  },
+  true
+)
+
+const p = $`sleep 9999`
+await quiet(timeout(100, 'SIGKILL')(p))
+await $`sleep 9999`.quiet().timeout(100, 'SIGKILL')
+await quiet(timeout(100, 'SIGKILL')`sleep 9999`)
+```
+
 ### `$.silent`
 _merged as [bf88f50](bf88f5064b31dea79da4999f25425ca0fe0b8013)_    
 Sets `verbose = false` for a single invocation.
