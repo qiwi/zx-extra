@@ -82,3 +82,5 @@ import {strict as assert} from 'node:assert'
     console.log('killed3')
   }
 }
+
+process.exit(0)

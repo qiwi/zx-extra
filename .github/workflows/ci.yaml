@@ -60,7 +60,7 @@ jobs:
         run: npm i -g npm
 
       - name: Run tests
-        timeout-minutes: 1
+        timeout-minutes: 2
         run: npm run test
 
   release:
