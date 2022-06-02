@@ -1,5 +1,6 @@
 import {$, quiet, ProcessPromise} from 'zx'
 import {ctx} from 'zx/experimental'
+import {isTemplateSignature, randomId} from './util.mjs'
 
 export { semver } from './semver.mjs'
 export * from 'zx'
@@ -22,8 +23,6 @@ $.o = $.opt =
     (...args) =>
       ctx(($) => Object.assign($, opts)(...args))
 
-const randomId = () => Math.random().toString(36).slice(2)
-
 export const createHook = (opts, name = randomId(), cb = (v) => v, configurable) => {
   ProcessPromise.prototype[name] = function (...args) {
     Object.assign(this.ctx, opts)
@@ -37,6 +36,10 @@ export const createHook = (opts, name = randomId(), cb = (v) => v, configurable)
     if (!configurable) {
       const p = getP(args[0], opts, args)
       return p[name]()
+    }
+
+    if (isTemplateSignature(...args)) {
+      throw new Error('Configurable hook requires options: use $.hook(a, b)`cmd --foo bar` instead of $.hook`cmd --foo bar`')
     }
 
     return (...$args) => {

@@ -81,5 +81,11 @@ import {$, semver, createHook} from '../../main/js/index.mjs'
   } catch {
     console.log('killed3')
   }
+
+  try {
+    timeout`echo 'foo'`
+  } catch (e) {
+    assert(e.message.startsWith('Configurable hook requires options'))
+  }
 }
 
