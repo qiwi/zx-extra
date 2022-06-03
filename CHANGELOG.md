@@ -1,3 +1,8 @@
+## [1.6.1](https://github.com/qiwi/zx-extra/compare/v1.6.0...v1.6.1) (2022-06-03)
+
+### Fixes & improvements
+* docs: formatting ([031a002](https://github.com/qiwi/zx-extra/commit/031a00283e2deb866cf9d38bb221d91b3136a659))
+
 ## [1.6.0](https://github.com/qiwi/zx-extra/compare/v1.5.0...v1.6.0) (2022-06-03)
 
 ### Features
