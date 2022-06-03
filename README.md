@@ -24,11 +24,20 @@ ip.address() // 1.2.3.4
 ```
 
 ### `semver`
-Semantic versioning API provided by [node-semver](https://github.com/npm/node-semver)
+Semantic versioning API provided by [node-semver](https://github.com/npm/node-semver).
 ```js
 import {semver} from 'zx-extra'
 
 semver.gte('1.0.1', '1.0.0')
+```
+
+### `tempy`
+Creates [temp dirs and files](https://github.com/sindresorhus/tempy).
+```js
+import {tempy} from 'zx-extra'
+
+temporaryFile()       // '/private/var/folders/p0/p7xckky93s30rshd51gs4pdc0000gn/T/1b7e9277860eb90b94aad816d4f66f8e'
+temporaryDirectory()  // '/private/var/folders/p0/p7xckky93s30rshd51gs4pdc0000gn/T/1b7e9277860eb90b94aad816d4f66f8e'
 ```
 
 ### $.preferLocal

@@ -1,5 +1,5 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook, ip} from '../../main/js/index.mjs'
+import {$, semver, createHook, ip, tempy} from '../../main/js/index.mjs'
 
 // $.raw
 {
@@ -110,3 +110,8 @@ import {$, semver, createHook, ip} from '../../main/js/index.mjs'
   assert(/(\d+\.){3}\d+/.test(ip.address()))
 }
 
+// tempy
+{
+  assert(typeof tempy.temporaryDirectory() === 'string')
+  assert(typeof tempy.rootTemporaryDirectory === 'string')
+}

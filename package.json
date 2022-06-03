@@ -36,10 +36,12 @@
   "homepage": "https://github.com/qiwi/zx-extra#readme",
   "dependencies": {
     "@qiwi/deep-proxy": "^1.9.0",
+    "@types/ip": "^1.1.0",
     "@types/node": "^17.0.38",
     "@types/semver": "^7.3.9",
     "ip": "^1.1.8",
     "npm-run-path": "^5.1.0",
+    "tempy": "^3.0.0",
     "zx": "^6.2.0"
   }
 }

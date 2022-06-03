@@ -5,8 +5,7 @@ import {npmRunPath} from 'npm-run-path'
 import {DeepProxy} from '@qiwi/deep-proxy'
 
 export * from 'zx'
-export { default as ip } from 'ip'
-export { semver } from './semver.mjs'
+export * from './goods.mjs'
 
 export const $ = new DeepProxy(_$, ({DEFAULT, trapName, args}) => {
   if (trapName === 'apply') {
