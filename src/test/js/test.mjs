@@ -1,5 +1,5 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook, ip, tempy, tcping} from '../../main/js/index.mjs'
+import {$, semver, createHook, ip, tempy, tcping, sleep} from '../../main/js/index.mjs'
 
 // $.raw
 {
@@ -102,6 +102,7 @@ import {$, semver, createHook, ip, tempy, tcping} from '../../main/js/index.mjs'
 
   await $`ps-tree`
 
+  $.preferLocal = false
   $.verbose = 2
 }
 
