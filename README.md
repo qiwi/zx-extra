@@ -31,7 +31,7 @@ import {semver} from 'zx-extra'
 semver.gte('1.0.1', '1.0.0')
 ```
 
-### tcping
+### `tcping`
 Checks the network availability of the specified gateway via [is-reachable](https://github.com/sindresorhus/is-reachable#readme).
 ```js
 import {tcping} from 'zx-extra'
@@ -49,7 +49,7 @@ temporaryFile()       // '/private/var/folders/p0/p7xckky93s30rshd51gs4pdc0000gn
 temporaryDirectory()  // '/private/var/folders/p0/p7xckky93s30rshd51gs4pdc0000gn/T/1b7e9277860eb90b94aad816d4f66f8e'
 ```
 
-### $.preferLocal
+### `$.preferLocal`
 In npm run scripts you can execute locally installed binaries by name. This enables the same for zx.
 ```js
 $`terser input.js --compress ecma=2015,computed_props=false`
