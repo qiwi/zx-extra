@@ -1,3 +1,8 @@
+## [1.3.0](https://github.com/qiwi/zx-extra/compare/v1.2.0...v1.3.0) (2022-06-03)
+
+### Features
+* feat: intruduce $.preferLocal ([a665caf](https://github.com/qiwi/zx-extra/commit/a665caf4d5b99a7d767578700198d118d37375b5))
+
 ## [1.2.0](https://github.com/qiwi/zx-extra/compare/v1.1.0...v1.2.0) (2022-06-02)
 
 ### Features
