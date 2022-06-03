@@ -1,3 +1,8 @@
+## [1.6.0](https://github.com/qiwi/zx-extra/compare/v1.5.0...v1.6.0) (2022-06-03)
+
+### Features
+* feat: add tcping ([197cf54](https://github.com/qiwi/zx-extra/commit/197cf54c4a9ca25c5a688e456e681a921abf2f04))
+
 ## [1.5.0](https://github.com/qiwi/zx-extra/compare/v1.4.0...v1.5.0) (2022-06-03)
 
 ### Features
