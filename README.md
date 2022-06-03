@@ -31,6 +31,15 @@ import {semver} from 'zx-extra'
 semver.gte('1.0.1', '1.0.0')
 ```
 
+### tcping
+Checks the network availability of the specified gateway via [is-reachable](https://github.com/sindresorhus/is-reachable#readme).
+```js
+import {tcping} from 'zx-extra'
+
+await tcping('example.com:443') // true
+await tcping('unknown:1234')    // false
+```
+
 ### `tempy`
 Creates [temp dirs and files](https://github.com/sindresorhus/tempy).
 ```js

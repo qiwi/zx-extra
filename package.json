@@ -40,6 +40,7 @@
     "@types/node": "^17.0.38",
     "@types/semver": "^7.3.9",
     "ip": "^1.1.8",
+    "is-reachable": "^5.2.0",
     "npm-run-path": "^5.1.0",
     "tempy": "^3.0.0",
     "zx": "^6.2.0"

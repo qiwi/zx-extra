@@ -1,5 +1,5 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook, ip, tempy} from '../../main/js/index.mjs'
+import {$, semver, createHook, ip, tempy, tcping} from '../../main/js/index.mjs'
 
 // $.raw
 {
@@ -114,4 +114,10 @@ import {$, semver, createHook, ip, tempy} from '../../main/js/index.mjs'
 {
   assert(typeof tempy.temporaryDirectory() === 'string')
   assert(typeof tempy.rootTemporaryDirectory === 'string')
+}
+
+// tcping
+{
+  assert(await tcping('example.com:443'))
+  assert(!(await tcping('unknown:1234')))
 }
