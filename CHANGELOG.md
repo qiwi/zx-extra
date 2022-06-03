@@ -1,3 +1,8 @@
+## [1.6.5](https://github.com/qiwi/zx-extra/compare/v1.6.4...v1.6.5) (2022-06-03)
+
+### Fixes & improvements
+* fix: fix ci ([da27ebc](https://github.com/qiwi/zx-extra/commit/da27ebca36f415ff20c0a93f8865ebf432299f98))
+
 ## [1.6.4](https://github.com/qiwi/zx-extra/compare/v1.6.3...v1.6.4) (2022-06-03)
 
 ### Fixes & improvements
