@@ -17,6 +17,7 @@ interface $ {
   silent: $
   preferLocal?: boolean
   opt: (options: any) => $
+  o: (options: any) => $
 }
 
 export function createHook(opts?: $, name?: string, cb?: (p: ProcessPromise) => any, configurable?: boolean)

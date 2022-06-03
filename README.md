@@ -1,6 +1,9 @@
 # 🦪 zx-extra
 [zx](https://github.com/google/zx) with some extras
 
+## Requirements
+* Node.js >= 16.0.0
+
 ## Install
 ```shell
 # npm
@@ -65,7 +68,7 @@ const output = (await $.raw`${cmd} ${msg}`).toString().trim()
 ```
 
 ### `$.opt`
-Returns `$` with the specified preset.
+Returns `$` with the specified preset. Aliased for `$.o`.
 ```js
 const $$ = $.opt({verbose: false, spawn: customSpawn})
 
