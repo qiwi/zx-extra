@@ -1,5 +1,5 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook} from '../../main/js/index.mjs'
+import {$, semver, createHook, ip} from '../../main/js/index.mjs'
 
 // $.raw
 {
@@ -103,5 +103,10 @@ import {$, semver, createHook} from '../../main/js/index.mjs'
   await $`ps-tree`
 
   $.verbose = 2
+}
+
+// ip
+{
+  assert(/(\d+\.){3}\d+/.test(ip.address()))
 }
 

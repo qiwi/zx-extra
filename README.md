@@ -11,12 +11,20 @@ yarn add zx-extra
 ```
 
 ## Usage
-Inherits zx, so all origin methods are available.
+Inherits zx, so all origin methods are available. Follow [the upstream docs](https://github.com/google/zx) for details.
 
 ## Extras
 
+### `ip`
+Resolves the current IP address via [node-ip](https://github.com/indutny/node-ip).
+```js
+import {ip} from 'zx-extra'
+
+ip.address() // 1.2.3.4
+```
+
 ### `semver`
-Semantic versioning api from [node-semver](https://github.com/npm/node-semver)
+Semantic versioning API provided by [node-semver](https://github.com/npm/node-semver)
 ```js
 import {semver} from 'zx-extra'
 
