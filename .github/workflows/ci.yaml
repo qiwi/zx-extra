@@ -107,4 +107,4 @@ jobs:
           GIT_COMMITTER_NAME: 'qiwibot'
         run: |
           npm link
-          zx-extra https://raw.githubusercontent.com/semrel-extra/zx-semrel/master/release.mjs
+          zx-extra https://raw.githubusercontent.com/semrel-extra/zx-semrel/0df9ee72ccaddae156e821a340806d49307b963c/release.mjs
