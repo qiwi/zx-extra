@@ -1,3 +1,8 @@
+## [1.6.2](https://github.com/qiwi/zx-extra/compare/v1.6.1...v1.6.2) (2022-06-03)
+
+### Fixes & improvements
+* docs: mention `$.o()` alias ([22e1593](https://github.com/qiwi/zx-extra/commit/22e1593af216daa964ecbd8af578abeed62a2d74))
+
 ## [1.6.1](https://github.com/qiwi/zx-extra/compare/v1.6.0...v1.6.1) (2022-06-03)
 
 ### Fixes & improvements
