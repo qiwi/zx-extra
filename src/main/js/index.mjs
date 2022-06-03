@@ -1,9 +1,28 @@
-import {$, quiet, ProcessPromise} from 'zx'
+import {$ as _$, quiet, ProcessPromise} from 'zx'
 import {ctx} from 'zx/experimental'
 import {isTemplateSignature, randomId} from './util.mjs'
+import {npmRunPath} from 'npm-run-path'
+import {DeepProxy} from '@qiwi/deep-proxy'
 
 export { semver } from './semver.mjs'
 export * from 'zx'
+
+export const $ = new DeepProxy(_$, ({DEFAULT, trapName, args}) => {
+  if (trapName === 'apply') {
+    const [t,, receiver] = args
+    if (!t.preferLocal) {
+      return DEFAULT
+    }
+    const env = t.env
+    t.env = {...t.env, PATH: npmRunPath({cwd: t.cwd})}
+    const res = t(...receiver)
+    t.env = env
+
+    return res
+  }
+
+  return DEFAULT
+})
 
 $.raw = async (...args) => {
   const q = $.quote

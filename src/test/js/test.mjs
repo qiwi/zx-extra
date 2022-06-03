@@ -89,3 +89,19 @@ import {$, semver, createHook} from '../../main/js/index.mjs'
   }
 }
 
+// preferLocal
+{
+  $.verbose = 0
+  try {
+    await $`ps-tree`
+  } catch (e){
+    assert.ok(/command not found/.test(e.message))
+  }
+
+  $.preferLocal = true
+
+  await $`ps-tree`
+
+  $.verbose = 2
+}
+

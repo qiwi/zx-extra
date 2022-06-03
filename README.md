@@ -23,6 +23,12 @@ import {semver} from 'zx-extra'
 semver.gte('1.0.1', '1.0.0')
 ```
 
+### $.preferLocal
+In npm run scripts you can execute locally installed binaries by name. This enables the same for zx.
+```js
+$`terser input.js --compress ecma=2015,computed_props=false`
+```
+
 ### `$.raw`
 Evaluates target cmd as is without `shq`.
 ```js

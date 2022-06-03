@@ -8,7 +8,7 @@
     "zx-extra": "./src/main/js/cli.mjs"
   },
   "scripts": {
-    "test": "node ./src/main/js/cli.mjs ./src/test/js/test.mjs",
+    "test": "PATH=$(env -i bash -c 'echo $PATH') node ./src/main/js/cli.mjs ./src/test/js/test.mjs",
     "publish": "npm publish --no-git-tag-version",
     "publish:beta": "npm publish --no-git-tag-version --tag beta",
     "publish:rc": "npm publish --no-git-tag-version --tag rc"
@@ -35,8 +35,10 @@
   },
   "homepage": "https://github.com/qiwi/zx-extra#readme",
   "dependencies": {
+    "@qiwi/deep-proxy": "^1.9.0",
     "@types/node": "^17.0.38",
     "@types/semver": "^7.3.9",
+    "npm-run-path": "^5.1.0",
     "zx": "^6.2.0"
   }
 }
