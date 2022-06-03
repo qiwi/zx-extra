@@ -1,3 +1,8 @@
+## [1.5.0](https://github.com/qiwi/zx-extra/compare/v1.4.0...v1.5.0) (2022-06-03)
+
+### Features
+* feat: integrate tempy package ([b260658](https://github.com/qiwi/zx-extra/commit/b2606589020fc17fea297108f0a168dab61b527a))
+
 ## [1.4.0](https://github.com/qiwi/zx-extra/compare/v1.3.0...v1.4.0) (2022-06-03)
 
 ### Features
