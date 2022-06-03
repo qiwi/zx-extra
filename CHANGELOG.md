@@ -1,3 +1,8 @@
+## [1.4.0](https://github.com/qiwi/zx-extra/compare/v1.3.0...v1.4.0) (2022-06-03)
+
+### Features
+* feat: integrate node-ip package ([d7e74ed](https://github.com/qiwi/zx-extra/commit/d7e74ed49bcd503173d000a673a9bf11e483f11b))
+
 ## [1.3.0](https://github.com/qiwi/zx-extra/compare/v1.2.0...v1.3.0) (2022-06-03)
 
 ### Features
