@@ -1,3 +1,8 @@
+## [1.6.4](https://github.com/qiwi/zx-extra/compare/v1.6.3...v1.6.4) (2022-06-03)
+
+### Fixes & improvements
+* perf: tech release ([bdce6a5](https://github.com/qiwi/zx-extra/commit/bdce6a54dc7ea6af64ab3be9050a24504ce56244))
+
 ## [1.6.3](https://github.com/qiwi/zx-extra/compare/v1.6.2...v1.6.3) (2022-06-03)
 
 ### Fixes & improvements
