@@ -1,3 +1,8 @@
+## [1.6.6](https://github.com/qiwi/zx-extra/compare/v1.6.5...v1.6.6) (2022-06-05)
+
+### Fixes & improvements
+* fix: update zx to v6.2.3, migrate to @qiwi/deep-proxy v2 ([fa11e40](https://github.com/qiwi/zx-extra/commit/fa11e409d144812a3b261c69342a949142fe7aab))
+
 ## [1.6.5](https://github.com/qiwi/zx-extra/compare/v1.6.4...v1.6.5) (2022-06-03)
 
 ### Fixes & improvements
