@@ -57,6 +57,8 @@ In npm run scripts you can execute locally installed binaries by name. This enab
 ```js
 $`terser input.js --compress ecma=2015,computed_props=false`
 ```
+Note, that yarn and npm modify `env.$PATH` value, so some `*/node_modules/.bin` binaries are available for invocation.
+To disable this side-effect, append smth like [`PATH=$(env -i bash -c 'echo $PATH')` to the command](https://askubuntu.com/questions/386629/what-are-the-default-path-values).
 
 ### `$.raw`
 Evaluates target cmd as is without `shq`.

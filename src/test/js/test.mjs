@@ -42,7 +42,8 @@ import {$, semver, createHook, ip, tempy, tcping, sleep} from '../../main/js/ind
 
 // hooks
 {
-  const quiet = createHook({ verbose: false }, 'quiet')
+  const nothrow = createHook({nothrow: true}, 'nothrow')
+  const quiet = createHook({ verbose: 0 }, 'quiet')
   const debug = createHook({ verbose: 2 }, 'debug')
   const timeout = createHook(
     null,
@@ -51,10 +52,9 @@ import {$, semver, createHook, ip, tempy, tcping, sleep} from '../../main/js/ind
       if (!t) return p
       let timer = setTimeout(() => p.kill(signal), t)
 
-      return Object.assign(
-        p.finally(() => clearTimeout(timer)),
-        p
-      )
+      p.finally(() => clearTimeout(timer))
+
+      return p
     },
     true
   )
@@ -64,20 +64,20 @@ import {$, semver, createHook, ip, tempy, tcping, sleep} from '../../main/js/ind
   await $`echo 'chained'`.quiet()
 
   try {
-    await quiet(timeout(100, 'SIGKILL')`sleep 9999`)
+    await nothrow(quiet(timeout(100, 'SIGKILL')`sleep 9999`))
   } catch {
     console.log('killed1')
   }
 
   try {
     const p = $`sleep 9999`
-    await quiet(timeout(100, 'SIGKILL')(p))
+    await nothrow(quiet(timeout(100, 'SIGKILL')(p)))
   } catch {
     console.log('killed2')
   }
 
   try {
-    await $`sleep 9999`.quiet().timeout(100, 'SIGKILL')
+    await $`sleep 9999`.timeout(100, 'SIGKILL').quiet().nothrow()
   } catch {
     console.log('killed3')
   }

@@ -7,18 +7,18 @@ import {DeepProxy} from '@qiwi/deep-proxy'
 export * from 'zx'
 export * from './goods.mjs'
 
-export const $ = new DeepProxy(_$, ({DEFAULT, trapName, args}) => {
+export const $ = new DeepProxy(_$, ({DEFAULT, target: t, trapName, args}) => {
   if (trapName === 'apply') {
-    const [t,, receiver] = args
     if (!t.preferLocal) {
       return DEFAULT
     }
     const env = t.env
     t.env = {...t.env, PATH: npmRunPath({cwd: t.cwd})}
-    const res = t(...receiver)
-    t.env = env
-
-    return res
+    try {
+      return t(...args)
+    } finally {
+      t.env = env
+    }
   }
 
   return DEFAULT
