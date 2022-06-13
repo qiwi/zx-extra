@@ -1,5 +1,5 @@
 import {$ as _$, quiet, ProcessPromise} from 'zx'
-import {ctx} from 'zx/experimental'
+import {ctx as _ctx} from 'zx/experimental'
 import {isTemplateSignature, randomId} from './util.mjs'
 import {npmRunPath} from 'npm-run-path'
 import {DeepProxy} from '@qiwi/deep-proxy'
@@ -23,6 +23,8 @@ export const $ = new DeepProxy(_$, ({DEFAULT, target: t, trapName, args}) => {
 
   return DEFAULT
 })
+
+export const ctx = (cb, ref = $.bind(null)) => _ctx(cb, ref)
 
 $.raw = async (...args) => {
   const q = $.quote

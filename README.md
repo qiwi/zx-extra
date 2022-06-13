@@ -52,6 +52,33 @@ temporaryFile()       // '/private/var/folders/p0/p7xckky93s30rshd51gs4pdc0000gn
 temporaryDirectory()  // '/private/var/folders/p0/p7xckky93s30rshd51gs4pdc0000gn/T/1b7e9277860eb90b94aad816d4f66f8e'
 ```
 
+### `ctx`
+[async_hooks](https://nodejs.org/api/async_hooks.html)-driven scope isolator.
+Creates a separate zx-context for the specified function.
+
+```js
+import {ctx} from 'zx/experimental'
+
+const _$ = $
+ctx(async ($) => {
+  await sleep(10)
+  cd('/foo')
+  // $.cwd refers to /foo
+  // _$.cwd === $.cwd
+})
+
+ctx(async ($) => {
+  await sleep(20)
+  // _$.cwd refers to /foo
+  // but _$.cwd !== $.cwd
+})
+
+const ref = $.bind(null)
+ctx(($) => {
+  ref === $ // true
+}, ref)
+```
+
 ### `$.preferLocal`
 In npm run scripts you can execute locally installed binaries by name. This enables the same for zx.
 ```js

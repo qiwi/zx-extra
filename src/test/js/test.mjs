@@ -1,5 +1,5 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook, ip, tempy, tcping, sleep} from '../../main/js/index.mjs'
+import {$, semver, createHook, ip, tempy, tcping, sleep, ctx} from '../../main/js/index.mjs'
 
 // $.raw
 {
@@ -121,4 +121,24 @@ import {$, semver, createHook, ip, tempy, tcping, sleep} from '../../main/js/ind
 {
   assert(await tcping('example.com:443'))
   assert(!(await tcping('unknown:1234')))
+}
+
+// ctx()
+{
+  await ctx(async ($) => {
+    $.verbose = 0
+    assert(typeof $.raw === 'function')
+
+    await ctx(async ($) => {
+      await ctx(async ($) => {
+        assert($.verbose === 0)
+        assert(typeof $.raw === 'function')
+
+        await $`echo e`
+      })
+    })
+
+    await $`echo c`
+    $.verbose = 2
+  })
 }
