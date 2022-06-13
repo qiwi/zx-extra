@@ -1,3 +1,8 @@
+## [1.7.0](https://github.com/qiwi/zx-extra/compare/v1.6.6...v1.7.0) (2022-06-13)
+
+### Features
+* feat: export experimental `ctx` wrapper ([2f2adb3](https://github.com/qiwi/zx-extra/commit/2f2adb3b404996690e8e047d20249cf2b61a4509))
+
 ## [1.6.6](https://github.com/qiwi/zx-extra/compare/v1.6.5...v1.6.6) (2022-06-05)
 
 ### Fixes & improvements
