@@ -1,3 +1,8 @@
+## [1.7.1](https://github.com/qiwi/zx-extra/compare/v1.7.0...v1.7.1) (2022-06-26)
+
+### Fixes & improvements
+* fix: fix `$.raw` context ([41e6add](https://github.com/qiwi/zx-extra/commit/41e6add6c19f586c20a05b135dc3fe4e6b7ce63d))
+
 ## [1.7.0](https://github.com/qiwi/zx-extra/compare/v1.6.6...v1.7.0) (2022-06-13)
 
 ### Features

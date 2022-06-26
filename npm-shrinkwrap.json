@@ -1,12 +1,12 @@
 {
   "name": "zx-extra",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "zx-extra",
-      "version": "1.7.0",
+      "version": "1.7.1",
       "license": "MIT",
       "dependencies": {
         "@qiwi/deep-proxy": "^2.0.1",
