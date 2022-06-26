@@ -26,15 +26,7 @@ export const $ = new DeepProxy(_$, ({DEFAULT, target: t, trapName, args}) => {
 
 export const ctx = (cb, ref = $.bind(null)) => _ctx(cb, ref)
 
-$.raw = async (...args) => {
-  const q = $.quote
-  $.quote = v => v
-  try {
-    return $(...args)
-  } finally {
-    $.quote = q
-  }
-}
+$.raw = async (...args) => $.o({quote: v => v})(...args)
 
 // https://github.com/google/zx/pull/134
 $.silent = async (...args) => quiet($(...args))
