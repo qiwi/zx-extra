@@ -1,5 +1,4 @@
-import {$ as _$, quiet, ProcessPromise} from 'zx'
-import {ctx as _ctx} from 'zx/experimental'
+import {$ as _$, quiet, ProcessPromise, within} from 'zx'
 import {isTemplateSignature, randomId} from './util.mjs'
 import {npmRunPath} from 'npm-run-path'
 import {DeepProxy} from '@qiwi/deep-proxy'
@@ -24,7 +23,7 @@ export const $ = new DeepProxy(_$, ({DEFAULT, target: t, trapName, args}) => {
   return DEFAULT
 })
 
-export const ctx = (cb, ref = $.bind(null)) => _ctx(cb, ref)
+export const ctx = (cb, ref = $) => within(() => cb(ref))
 
 $.raw = async (...args) => $.o({quote: v => v})(...args)
 
@@ -34,11 +33,18 @@ $.silent = async (...args) => quiet($(...args))
 $.o = $.opt =
   (opts) =>
     (...args) =>
-      ctx(($) => Object.assign($, opts)(...args))
+      ctx(($) => {
+        Object.assign(_$, opts)
+        const p = $(...args)
+        if (p._snapshot) p._nothrow = true
+        return p
+      })
 
 export const createHook = (opts, name = randomId(), cb = (v) => v, configurable) => {
   ProcessPromise.prototype[name] = function (...args) {
-    Object.assign(this.ctx, opts)
+    Object.assign(this._snapshot, opts)
+    if (this._snapshot) this._nothrow = true
+
     return cb(this, ...args)
   }
 
