@@ -128,6 +128,8 @@ import {$, semver, createHook, ip, tempy, tcping, sleep, ctx} from '../../main/j
   await ctx(async ($) => {
     $.verbose = 0
     assert(typeof $.raw === 'function')
+    assert(typeof $.o === 'function')
+    assert(typeof $.opt === 'function')
 
     await ctx(async ($) => {
       await ctx(async ($) => {
