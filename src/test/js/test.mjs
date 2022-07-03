@@ -144,3 +144,8 @@ import {$, semver, createHook, ip, tempy, tcping, sleep, ctx} from '../../main/j
     $.verbose = 2
   })
 }
+
+// $.cwd
+{
+  assert.ok($.cwd === process.cwd())
+}

@@ -30,6 +30,9 @@ $.raw = async (...args) => $.o({quote: v => v})(...args)
 // https://github.com/google/zx/pull/134
 $.silent = async (...args) => quiet($(...args))
 
+// https://github.com/google/zx/blob/c73ccb468cfd2340fb296e17a543eb2399b449ec/src/core.ts#L174
+$.cwd = process.cwd()
+
 $.o = $.opt =
   (opts) =>
     (...args) =>
