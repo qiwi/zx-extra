@@ -1,3 +1,8 @@
+## [2.1.0](https://github.com/qiwi/zx-extra/compare/v2.0.0...v2.1.0) (2022-07-03)
+
+### Features
+* feat: set default $.cwd ([5b464ce](https://github.com/qiwi/zx-extra/commit/5b464cee3045d570f9a92b074bbc6a0d0c919166))
+
 ## [2.0.0](https://github.com/qiwi/zx-extra/compare/v1.7.1...v2.0.0) (2022-07-03)
 
 ### BREAKING CHANGES
