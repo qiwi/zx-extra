@@ -36,14 +36,14 @@ $.o = $.opt =
       ctx(($) => {
         Object.assign(_$, opts)
         const p = $(...args)
-        if (p._snapshot) p._nothrow = true
+        if (p._snapshot.nothrow) p._nothrow = true
         return p
       })
 
 export const createHook = (opts, name = randomId(), cb = (v) => v, configurable) => {
   ProcessPromise.prototype[name] = function (...args) {
     Object.assign(this._snapshot, opts)
-    if (this._snapshot) this._nothrow = true
+    if (this._snapshot.nothrow) this._nothrow = true
 
     return cb(this, ...args)
   }
