@@ -1,3 +1,8 @@
+## [2.0.0](https://github.com/qiwi/zx-extra/compare/v1.7.1...v2.0.0) (2022-07-03)
+
+### BREAKING CHANGES
+* see https://github.com/google/zx/compare/6.2.5...7.0.0 ([58c671d](https://github.com/qiwi/zx-extra/commit/58c671d8ff5688d7d2a816e74c18c45f60e72818))
+
 ## [1.7.1](https://github.com/qiwi/zx-extra/compare/v1.7.0...v1.7.1) (2022-06-26)
 
 ### Fixes & improvements
