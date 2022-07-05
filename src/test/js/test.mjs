@@ -1,5 +1,10 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook, ip, tempy, tcping, sleep, ctx, copy, fs, path} from '../../main/js/index.mjs'
+import {$, semver, createHook, ip, tempy, tcping, ctx, copy, fs, path} from '../../main/js/index.mjs'
+
+// $.verbose
+{
+  assert($.verbose === false)
+}
 
 // $.raw
 {

@@ -111,6 +111,9 @@ const output = (await $.raw`${cmd} ${msg}`).toString().trim()
 // $ echo foo bar
 ```
 
+### `$.verbose`
+Set to `false` by default.
+
 ### `$.opt`
 Returns `$` with the specified preset. Aliased for `$.o`.
 ```js

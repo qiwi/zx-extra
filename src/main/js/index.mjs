@@ -1,4 +1,4 @@
-import {$ as _$, quiet, ProcessPromise, within} from 'zx'
+import {$ as _$, quiet, ProcessPromise, within, argv} from 'zx'
 import {isTemplateSignature, randomId} from './util.mjs'
 import {npmRunPath} from 'npm-run-path'
 import {DeepProxy} from '@qiwi/deep-proxy'
@@ -24,6 +24,8 @@ export const $ = new DeepProxy(_$, ({DEFAULT, target: t, trapName, args}) => {
 })
 
 export const ctx = (cb, ref = $) => within(() => cb(ref))
+
+$.verbose = false
 
 $.raw = async (...args) => $.o({quote: v => v})(...args)
 

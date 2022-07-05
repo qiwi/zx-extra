@@ -8,7 +8,7 @@
     "zx-extra": "./src/main/js/cli.mjs"
   },
   "scripts": {
-    "test": "PATH=$(env -i bash -c 'echo $PATH') node ./src/main/js/cli.mjs ./src/test/js/test.mjs",
+    "test": "PATH=$(env -i bash -c 'echo $PATH') node ./src/main/js/cli.mjs ./src/test/js/test.mjs --quiet",
     "publish:byhand": "npm publish --no-git-tag-version",
     "publish:beta": "npm publish --no-git-tag-version --tag beta",
     "publish:rc": "npm publish --no-git-tag-version --tag rc"
