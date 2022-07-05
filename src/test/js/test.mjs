@@ -1,5 +1,5 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook, ip, tempy, tcping, sleep, ctx} from '../../main/js/index.mjs'
+import {$, semver, createHook, ip, tempy, tcping, sleep, ctx, copy, fs, path} from '../../main/js/index.mjs'
 
 // $.raw
 {
@@ -121,6 +121,18 @@ import {$, semver, createHook, ip, tempy, tcping, sleep, ctx} from '../../main/j
 {
   assert(await tcping('example.com:443'))
   assert(!(await tcping('unknown:1234')))
+}
+
+// copy
+{
+  const from = tempy.temporaryDirectory()
+  const to = tempy.temporaryDirectory()
+  const footxt = path.resolve(from, 'foo.txt')
+
+  await fs.outputFile(footxt, 'foo')
+
+  await copy({from: footxt, to})
+  assert.equal((await fs.readFile(path.resolve(to, 'foo.txt'))).toString('utf-8').trim(), 'foo')
 }
 
 // ctx()

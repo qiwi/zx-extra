@@ -52,6 +52,21 @@ temporaryFile()       // '/private/var/folders/p0/p7xckky93s30rshd51gs4pdc0000gn
 temporaryDirectory()  // '/private/var/folders/p0/p7xckky93s30rshd51gs4pdc0000gn/T/1b7e9277860eb90b94aad816d4f66f8e'
 ```
 
+### `copy`
+Provides [`globby`-boosted copying API](https://github.com/antongolub/globby-cp).
+```js
+import {copy} from 'zx-extra'
+
+await copy({
+  from:       'src/**/*.js',
+  to:         'dist/',
+  baseFrom,   // process.cwd()
+  baseTo,     // process.cwd(),
+  debug,      // () => {}
+  ignoreFiles // undefined
+})
+```
+
 ### `ctx`
 [async_hooks](https://nodejs.org/api/async_hooks.html)-driven scope isolator.
 Creates a separate zx-context for the specified function.
