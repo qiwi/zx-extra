@@ -1,3 +1,8 @@
+## [2.2.0](https://github.com/qiwi/zx-extra/compare/v2.1.0...v2.2.0) (2022-07-05)
+
+### Features
+* feat: add `copy` helper ([21457f3](https://github.com/qiwi/zx-extra/commit/21457f3b17f0c13d7ef631900d77279fb671d7ed))
+
 ## [2.1.0](https://github.com/qiwi/zx-extra/compare/v2.0.0...v2.1.0) (2022-07-03)
 
 ### Features
