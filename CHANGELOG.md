@@ -1,3 +1,8 @@
+## [2.3.0](https://github.com/qiwi/zx-extra/compare/v2.2.0...v2.3.0) (2022-07-05)
+
+### Features
+* feat: set `$.verbose` to false by default ([2d398a0](https://github.com/qiwi/zx-extra/commit/2d398a0dd16ad8a0924630a8641c351fcc6ce830))
+
 ## [2.2.0](https://github.com/qiwi/zx-extra/compare/v2.1.0...v2.2.0) (2022-07-05)
 
 ### Features
