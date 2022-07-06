@@ -1,5 +1,19 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook, ip, tempy, tcping, ctx, copy, fs, path, SSRI, INI} from '../../main/js/index.mjs'
+import {
+  $,
+  semver,
+  ver,
+  ctx,
+  createHook,
+  ip,
+  tempy,
+  tcping,
+  copy,
+  fs,
+  path,
+  SSRI,
+  INI
+} from '../../main/js/index.mjs'
 
 // $.verbose
 {
@@ -34,6 +48,14 @@ import {$, semver, createHook, ip, tempy, tcping, ctx, copy, fs, path, SSRI, INI
 {
   assert(semver.gte('1.0.1', '1.0.0'))
   assert(!semver.lt('1.0.0', '1.0.0'))
+}
+
+// ver
+{
+  assert.equal(ver('ip'), '1.1.8')
+  assert(ver('git').match(/^\d+\.\d+\.\d+$/))
+  assert(ver('git', '>=2'))
+  assert.throws(() => ver('git', '>=5'), {message: /^git@\d+\.\d+\.\d+ does not satisfy >=5$/})
 }
 
 // SSRI

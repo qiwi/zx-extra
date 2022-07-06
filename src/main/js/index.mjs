@@ -1,7 +1,9 @@
 import {$ as _$, quiet, ProcessPromise, within} from 'zx'
+import childProcess from 'node:child_process'
 import {isTemplateSignature, randomId} from './util.mjs'
 import {npmRunPath} from 'npm-run-path'
 import {DeepProxy} from '@qiwi/deep-proxy'
+import {semver} from './goods.mjs'
 
 export * from 'zx'
 export * from './goods.mjs'
@@ -71,4 +73,20 @@ export const createHook = (opts, name = randomId(), cb = (v) => v, configurable)
       return p[name](...args)
     }
   }
+}
+
+export const ver = (target, range = '*') => {
+  const version = (() => {
+    try {
+      return require(`${target}/package.json`).version
+    } catch {
+      return childProcess.spawnSync(target, ['--version'], {}).stdout.toString('utf-8').split(' ').find(semver.valid)
+    }
+  })()
+
+  if (!semver.satisfies(version, range)) {
+    throw new Error(`${target}@${version} does not satisfy ${range}`)
+  }
+
+  return version
 }

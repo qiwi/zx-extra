@@ -1,5 +1,5 @@
 # 🦪 zx-extra
-[zx](https://github.com/google/zx) with some extras
+> [zx](https://github.com/google/zx) with some extras
 
 ## Requirements
 * Node.js >= 16.0.0
@@ -14,7 +14,7 @@ yarn add zx-extra
 ```
 
 ## Usage
-Inherits zx, so all origin methods are available. Follow [the upstream docs](https://github.com/google/zx) for details.
+Inherits [zx](https://github.com/google/zx), so all origin methods are available. Follow [the upstream docs](https://github.com/google/zx) for details.
 
 ## Extras
 
@@ -32,6 +32,17 @@ Semantic versioning API provided by [node-semver](https://github.com/npm/node-se
 import {semver} from 'zx-extra'
 
 semver.gte('1.0.1', '1.0.0')
+```
+
+### `ver`
+Asserts the version of the specified package or binary against the semver range.
+```js
+import {ver} from 'zx-extra'
+
+ver('ip')           // '1.1.8'
+ver('git')          // '2.37.0'
+ver('git', '>=2')   // '2.37.0'
+ver('git', '>=5')   // Error: git@2.37.0 does not satisfy >=5
 ```
 
 ### `tcping`
