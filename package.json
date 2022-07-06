@@ -37,9 +37,9 @@
   "dependencies": {
     "@qiwi/deep-proxy": "^2.0.2",
     "@types/ip": "^1.1.0",
-    "@types/node": "^18.0.1",
+    "@types/node": "^18.0.3",
     "@types/semver": "^7.3.10",
-    "globby-cp": "^1.0.1",
+    "globby-cp": "^1.1.0",
     "ip": "^1.1.8",
     "is-reachable": "^5.2.1",
     "npm-run-path": "^5.1.0",
