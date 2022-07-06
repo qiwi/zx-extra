@@ -1,4 +1,4 @@
-import {$ as _$, quiet, ProcessPromise, within, argv} from 'zx'
+import {$ as _$, quiet, ProcessPromise, within} from 'zx'
 import {isTemplateSignature, randomId} from './util.mjs'
 import {npmRunPath} from 'npm-run-path'
 import {DeepProxy} from '@qiwi/deep-proxy'

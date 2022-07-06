@@ -1,5 +1,5 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook, ip, tempy, tcping, ctx, copy, fs, path} from '../../main/js/index.mjs'
+import {$, semver, createHook, ip, tempy, tcping, ctx, copy, fs, path, SSRI} from '../../main/js/index.mjs'
 
 // $.verbose
 {
@@ -34,6 +34,14 @@ import {$, semver, createHook, ip, tempy, tcping, ctx, copy, fs, path} from '../
 {
   assert(semver.gte('1.0.1', '1.0.0'))
   assert(!semver.lt('1.0.0', '1.0.0'))
+}
+
+// SSRI
+{
+  const integrity = 'sha512-9KhgCRIx/AmzC8xqYJTZRrnO8OW2Pxyl2DIMZSBOr0oDvtEFyht3xpp71j/r/pAe1DM+JI/A+line3jUBgzQ7A==?foo'
+  const parsed = SSRI.parse(integrity)
+  assert.equal(SSRI.stringify(parsed), integrity)
+  assert.equal(parsed.toString(), integrity)
 }
 
 // opt

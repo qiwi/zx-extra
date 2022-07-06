@@ -67,6 +67,18 @@ await copy({
 })
 ```
 
+### `SSRI`
+Exposes [SSRI API](https://github.com/npm/ssri#readme)
+```js
+import {SSRI} from 'zx-extra'
+
+const integrity = 'sha512-9KhgCRIx/AmzC8xqYJTZRrnO8OW2Pxyl2DIMZSBOr0oDvtEFyht3xpp71j/r/pAe1DM+JI/A+line3jUBgzQ7A==?foo'
+// Parsing and serializing
+const parsed = SSRI.parse(integrity)
+SSRI.stringify(parsed) // === integrity (works on non-Integrity objects)
+parsed.toString() // === integrity
+```
+
 ### `ctx`
 [async_hooks](https://nodejs.org/api/async_hooks.html)-driven scope isolator.
 Creates a separate zx-context for the specified function.
