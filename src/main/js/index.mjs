@@ -1,4 +1,4 @@
-import {$ as _$, quiet, ProcessPromise, within, which} from 'zx'
+import {$ as _$, quiet, ProcessPromise, within} from 'zx'
 import childProcess from 'node:child_process'
 import {isTemplateSignature, randomId} from './util.mjs'
 import {npmRunPath} from 'npm-run-path'
@@ -75,14 +75,19 @@ export const createHook = (opts, name = randomId(), cb = (v) => v, configurable)
   }
 }
 
-const getBinVer = (bin, opt) => childProcess.spawnSync(which(bin), [opt], {}).stdout.toString('utf-8').split(' ').find(semver.valid)
+const getBinVer = (bin, opt, nothrow) => {
+  const {stdout, stderr, error = stderr.toString('utf-8')} = childProcess.spawnSync(bin, [opt], {})
+  if (!nothrow && error) throw error
+
+  return stdout.toString('utf-8').trim().split(' ').find(semver.valid)
+}
 
 export const ver = (target, range = '*') => {
   const version = (() => {
     try {
       return require(`${target}/package.json`).version
     } catch {
-      return getBinVer(target, '--version') || getBinVer(target, '-v')
+      return getBinVer(target, '--version', true) || getBinVer(target, '-v')
     }
   })()
 

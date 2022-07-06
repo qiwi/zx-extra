@@ -56,6 +56,7 @@ import {
   assert(ver('git').match(/^\d+\.\d+\.\d+$/))
   assert(ver('git', '>=2'))
   assert.throws(() => ver('git', '>=5'), {message: /^git@\d+\.\d+\.\d+ does not satisfy >=5$/})
+  assert.throws(() => ver('unknownbin'), {message: 'spawnSync unknownbin ENOENT'})
 }
 
 // SSRI
