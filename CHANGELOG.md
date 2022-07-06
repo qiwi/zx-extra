@@ -1,3 +1,9 @@
+## [2.4.0](https://github.com/qiwi/zx-extra/compare/v2.3.0...v2.4.0) (2022-07-06)
+
+### Features
+* feat: add INI API ([b633945](https://github.com/qiwi/zx-extra/commit/b633945c082351757ecfff2305f03cfffb6156b0))
+* feat: expose `ssri` API ([f12141a](https://github.com/qiwi/zx-extra/commit/f12141a7a7df2d41f665dfae5defd439afa51f06))
+
 ## [2.3.0](https://github.com/qiwi/zx-extra/compare/v2.2.0...v2.3.0) (2022-07-05)
 
 ### Features
