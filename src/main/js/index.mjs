@@ -79,7 +79,7 @@ const getBinVer = (bin, opt, nothrow) => {
   const {stdout, stderr, error = stderr.toString('utf-8')} = childProcess.spawnSync(bin, [opt], {})
   if (!nothrow && error) throw error
 
-  return stdout.toString('utf-8').trim().split(' ').find(semver.valid)
+  return stdout?.toString('utf-8').trim().split(' ').find(semver.valid)
 }
 
 export const ver = (target, range = '*') => {
