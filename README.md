@@ -67,6 +67,20 @@ await copy({
 })
 ```
 
+### `INI`
+Provides [INI API](https://github.com/npm/ini#readme).
+```js
+import {INI} from 'zx-extra'
+
+const ini = `[database]
+user = dbuser
+password = dbpassword
+`
+  const parsed = INI.parse(ini)
+  parsed.database.user //  'dbuser'
+  INI.stringify(parsed, {whitespace: true}) //  ini
+```
+
 ### `SSRI`
 Exposes [SSRI API](https://github.com/npm/ssri#readme)
 ```js

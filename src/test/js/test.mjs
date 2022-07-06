@@ -1,5 +1,5 @@
 import {strict as assert} from 'node:assert'
-import {$, semver, createHook, ip, tempy, tcping, ctx, copy, fs, path, SSRI} from '../../main/js/index.mjs'
+import {$, semver, createHook, ip, tempy, tcping, ctx, copy, fs, path, SSRI, INI} from '../../main/js/index.mjs'
 
 // $.verbose
 {
@@ -42,6 +42,17 @@ import {$, semver, createHook, ip, tempy, tcping, ctx, copy, fs, path, SSRI} fro
   const parsed = SSRI.parse(integrity)
   assert.equal(SSRI.stringify(parsed), integrity)
   assert.equal(parsed.toString(), integrity)
+}
+
+// INI
+{
+  const ini = `[database]
+user = dbuser
+password = dbpassword
+`
+  const parsed = INI.parse(ini)
+  assert.equal(parsed.database.user, 'dbuser')
+  assert.equal(INI.stringify(parsed, {whitespace: true}), ini)
 }
 
 // opt

@@ -11,3 +11,4 @@ const reexport = (name) => require(join(
 
 export const semver = reexport('semver')
 export const SSRI = reexport('ssri')
+export const INI = reexport('ini')

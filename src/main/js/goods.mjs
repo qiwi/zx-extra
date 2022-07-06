@@ -1,5 +1,5 @@
 export * as tempy from 'tempy'
 export { default as ip } from 'ip'
-export { semver, SSRI } from './reexport.mjs'
+export { semver, SSRI, INI } from './reexport.mjs'
 export { default as tcping } from 'is-reachable'
 export { copy } from 'globby-cp'
