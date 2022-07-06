@@ -1,3 +1,13 @@
+## [2.5.0](https://github.com/qiwi/zx-extra/compare/v2.4.0...v2.5.0) (2022-07-06)
+
+### Fixes & improvements
+* fix(ver):  stdout?.toString ([19433eb](https://github.com/qiwi/zx-extra/commit/19433eb8adc86ae8aa0c4d543da46e0b3cffaad9))
+* fix: improve `ver` error logging ([2225c79](https://github.com/qiwi/zx-extra/commit/2225c79bde65daecc07926c1de9b9bc6f198de41))
+* fix(ver): try both `-v` and `--version` flags to get bin version ([7ef1f5f](https://github.com/qiwi/zx-extra/commit/7ef1f5f5332cdb7c0727034b7114d3ae24ecdb5b))
+
+### Features
+* feat: add `ver` helper to assert pkg or bin versions ([53827db](https://github.com/qiwi/zx-extra/commit/53827db878eec0a0b508724e251a35e82b22ff98))
+
 ## [2.4.0](https://github.com/qiwi/zx-extra/compare/v2.3.0...v2.4.0) (2022-07-06)
 
 ### Features
