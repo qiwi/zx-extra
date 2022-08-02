@@ -1,3 +1,8 @@
+## [2.5.1](https://github.com/qiwi/zx-extra/compare/v2.5.0...v2.5.1) (2022-08-02)
+
+### Fixes & improvements
+* fix: update zx to fix `$.spawn` issue ([78d505a](https://github.com/qiwi/zx-extra/commit/78d505a133ce88ab378316f56be7666cc9713526))
+
 ## [2.5.0](https://github.com/qiwi/zx-extra/compare/v2.4.0...v2.5.0) (2022-07-06)
 
 ### Fixes & improvements
