@@ -202,6 +202,23 @@ password = dbpassword
     await $`echo c`
     $.verbose = 2
   })
+
+  {
+    await ctx(async ($) => {
+      $.verbose = 0
+      const temp1 = tempy.temporaryDirectory()
+      const temp2 = tempy.temporaryDirectory()
+      $.cwd = temp1
+
+      assert((await $`pwd`).toString().trim() === temp1)
+      assert((await $`pwd`).toString().trim() === temp1)
+
+      $.cwd = temp2
+
+      assert((await $`pwd`).toString().trim() === temp2)
+      assert((await $`pwd`).toString().trim() === temp2)
+    })
+  }
 }
 
 // $.cwd
