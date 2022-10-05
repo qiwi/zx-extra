@@ -1,3 +1,8 @@
+## [2.5.2](https://github.com/qiwi/zx-extra/compare/v2.5.1...v2.5.2) (2022-10-05)
+
+### Fixes & improvements
+* perf: up zx to v7.1.0 ([857b8df](https://github.com/qiwi/zx-extra/commit/857b8dfda339eeac6fb7a45ea41a44b40c25fc38))
+
 ## [2.5.1](https://github.com/qiwi/zx-extra/compare/v2.5.0...v2.5.1) (2022-08-02)
 
 ### Fixes & improvements
