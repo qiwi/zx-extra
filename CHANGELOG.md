@@ -1,3 +1,8 @@
+## [2.5.3](https://github.com/qiwi/zx-extra/compare/v2.5.2...v2.5.3) (2023-01-12)
+
+### Fixes & improvements
+* fix: handle tsm load issue ([a316514](https://github.com/qiwi/zx-extra/commit/a3165145efa6a74037be8e5b993048b4f17f8c8c))
+
 ## [2.5.2](https://github.com/qiwi/zx-extra/compare/v2.5.1...v2.5.2) (2022-10-05)
 
 ### Fixes & improvements
