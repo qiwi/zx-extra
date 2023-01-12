@@ -35,15 +35,15 @@
   },
   "homepage": "https://github.com/qiwi/zx-extra#readme",
   "dependencies": {
-    "@qiwi/deep-proxy": "^2.0.2",
+    "@qiwi/deep-proxy": "^2.0.3",
     "@types/ip": "^1.1.0",
-    "@types/node": "^18.8.2",
-    "@types/semver": "^7.3.12",
+    "@types/node": "^18.11.18",
+    "@types/semver": "^7.3.13",
     "globby-cp": "^1.1.2",
     "ip": "^1.1.8",
     "is-reachable": "^5.2.1",
     "npm-run-path": "^5.1.0",
     "tempy": "^3.0.0",
-    "zx": "^7.1.0"
+    "zx": "^7.1.1"
   }
 }
