@@ -1,3 +1,8 @@
+## [2.5.4](https://github.com/qiwi/zx-extra/compare/v2.5.3...v2.5.4) (2023-03-17)
+
+### Fixes & improvements
+* fix: types ([2cced3d](https://github.com/qiwi/zx-extra/commit/2cced3d6152768f68de4eaa38b8f107c9b38eaa1))
+
 ## [2.5.3](https://github.com/qiwi/zx-extra/compare/v2.5.2...v2.5.3) (2023-01-12)
 
 ### Fixes & improvements
