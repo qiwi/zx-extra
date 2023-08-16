@@ -1,3 +1,8 @@
+## [2.5.5](https://github.com/qiwi/zx-extra/compare/v2.5.4...v2.5.5) (2023-08-16)
+
+### Fixes & improvements
+* fix: override types ([28298fa](https://github.com/qiwi/zx-extra/commit/28298fa0fad34623f8adb52650507a0594d63629))
+
 ## [2.5.4](https://github.com/qiwi/zx-extra/compare/v2.5.3...v2.5.4) (2023-03-17)
 
 ### Fixes & improvements
