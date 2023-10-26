@@ -1,4 +1,4 @@
-import {$ as _$, quiet, ProcessPromise, within} from 'zx'
+import {$ as _$, quiet, ProcessPromise, within, ProcessOutput} from 'zx'
 import childProcess from 'node:child_process'
 import {isTemplateSignature, randomId} from './util.mjs'
 import {npmRunPath} from 'npm-run-path'
@@ -7,6 +7,17 @@ import {semver} from './goods.mjs'
 
 export * from 'zx'
 export * from './goods.mjs'
+
+ProcessOutput.prototype.valueOf = function () {
+  return this.toString()
+}
+
+ProcessOutput.prototype.toString = function () {
+  const str = this._combined.toString()
+  return $.trim
+    ? str.trim()
+    : str
+}
 
 export const $ = new DeepProxy(_$, ({DEFAULT, target: t, trapName, args}) => {
   if (trapName === 'apply') {
@@ -28,6 +39,8 @@ export const $ = new DeepProxy(_$, ({DEFAULT, target: t, trapName, args}) => {
 export const ctx = (cb, ref = $) => within(() => cb(ref))
 
 $.verbose = false
+
+$.trim = true
 
 $.raw = async (...args) => $.o({quote: v => v})(...args)
 

@@ -20,12 +20,30 @@ import {
   assert($.verbose === false)
 }
 
+// $.trim
+{
+  $.trim = false
+  const _output = await $`echo foobar`
+
+  assert(_output.toString() !== 'foobar')
+  assert(_output.toString().trim() === 'foobar')
+
+  $.trim = true
+  const output = await $`echo foobar`
+
+  assert(output.toString() === 'foobar')
+  assert(output == 'foobar')
+  assert(/foo/.test(output))
+  assert(`${output}baz` === 'foobarbaz')
+}
+
 // $.raw
 {
   const cmd = 'echo raw foo'
   const msg = 'bar'
-  const output = (await $.raw`${cmd} ${msg}`).toString().trim()
-  assert(output === 'raw foo bar')
+  const output = await $.raw`${cmd} ${msg}`
+
+  assert(output.toString().trim() === 'raw foo bar')
 }
 
 // $.silent

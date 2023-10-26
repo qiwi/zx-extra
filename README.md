@@ -151,6 +151,9 @@ const output = (await $.raw`${cmd} ${msg}`).toString().trim()
 ### `$.verbose`
 Set to `false` by default.
 
+### `$.trim`
+Applies `.thim()` to `ProcessOutput` string representation. Set `true` by default.
+
 ### `$.opt`
 Returns `$` with the specified preset. Aliased for `$.o`.
 ```js
