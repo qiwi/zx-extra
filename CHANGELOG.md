@@ -1,3 +1,8 @@
+## [2.6.0](https://github.com/qiwi/zx-extra/compare/v2.5.5...v2.6.0) (2023-10-26)
+
+### Features
+* feat: provide  `$.trim` option ([0a2f18d](https://github.com/qiwi/zx-extra/commit/0a2f18d98f1e94cfb9f630802b4518dbfb4254a7))
+
 ## [2.5.5](https://github.com/qiwi/zx-extra/compare/v2.5.4...v2.5.5) (2023-08-16)
 
 ### Fixes & improvements
