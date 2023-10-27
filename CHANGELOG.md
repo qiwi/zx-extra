@@ -1,3 +1,8 @@
+## [2.6.1](https://github.com/qiwi/zx-extra/compare/v2.6.0...v2.6.1) (2023-10-27)
+
+### Fixes & improvements
+* docs: fix typo ([d3a1564](https://github.com/qiwi/zx-extra/commit/d3a15643ea112fa51002f00f15067850a5a83259))
+
 ## [2.6.0](https://github.com/qiwi/zx-extra/compare/v2.5.5...v2.6.0) (2023-10-26)
 
 ### Features
