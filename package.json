@@ -1,6 +1,6 @@
 {
   "name": "zx-extra",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "zx with some useful extras",
   "main": "./src/main/js/index.mjs",
   "types": "./src/main/js/index.d.ts",

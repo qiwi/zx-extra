@@ -1,3 +1,8 @@
+## [2.6.2](https://github.com/qiwi/zx-extra/compare/v2.6.1...v2.6.2) (2023-10-29)
+
+### Fixes & improvements
+* fix(deps): update dependency @types/node to v20 ([7df6a7e](https://github.com/qiwi/zx-extra/commit/7df6a7ef376b7ebd92d1072ae2c356cffb2f249b))
+
 ## [2.6.1](https://github.com/qiwi/zx-extra/compare/v2.6.0...v2.6.1) (2023-10-27)
 
 ### Fixes & improvements
