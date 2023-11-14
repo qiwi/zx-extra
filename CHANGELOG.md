@@ -1,3 +1,9 @@
+## [2.6.3](https://github.com/qiwi/zx-extra/compare/v2.6.2...v2.6.3) (2023-11-14)
+
+### Fixes & improvements
+* fix: wrap whole `getBinVer` with trycatch to strengthen `nothrow` behavior ([46d927a](https://github.com/qiwi/zx-extra/commit/46d927aaee0cded6f73d29cd0847f7fa7f10c2c3))
+* refactor: rm reexports from global in favor of regular deps ([e217730](https://github.com/qiwi/zx-extra/commit/e217730fc1ab9a4e9891621ee3c363e748589fa2))
+
 ## [2.6.2](https://github.com/qiwi/zx-extra/compare/v2.6.1...v2.6.2) (2023-10-29)
 
 ### Fixes & improvements
