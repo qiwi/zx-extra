@@ -10,7 +10,7 @@
     "@nodelib/fs.stat" "2.0.5"
     run-parallel "^1.1.9"
 
-"@nodelib/fs.stat@^2.0.2", "@nodelib/fs.stat@2.0.5":
+"@nodelib/fs.stat@2.0.5", "@nodelib/fs.stat@^2.0.2":
   version "2.0.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz"
   integrity sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==
@@ -88,10 +88,17 @@
   resolved "https://registry.npmjs.org/@types/minimist/-/minimist-1.2.2.tgz"
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
-"@types/node@*", "@types/node@^18.11.18", "@types/node@^18.7.20":
+"@types/node@*", "@types/node@^18.7.20":
   version "18.11.18"
   resolved "https://registry.npmjs.org/@types/node/-/node-18.11.18.tgz"
   integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
+
+"@types/node@^20.0.0":
+  version "20.9.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.9.0.tgz#bfcdc230583aeb891cf51e73cfdaacdd8deae298"
+  integrity sha512-nekiGu2NDb1BcVofVcEKMIwzlx4NjHlcjhoxxKBNLtz15Y1z7MYf549DFvkHSId02Ax6kGwWntIBPC3l/JZcmw==
+  dependencies:
+    undici-types "~5.26.4"
 
 "@types/ps-tree@^1.1.2":
   version "1.1.2"
@@ -423,7 +430,7 @@ isexe@^2.0.0:
   resolved "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-json-buffer@~3.0.1, json-buffer@3.0.1:
+json-buffer@3.0.1, json-buffer@~3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/json-buffer/-/json-buffer-3.0.1.tgz"
   integrity sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==
@@ -513,11 +520,6 @@ normalize-url@^6.0.1:
   version "6.1.0"
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-6.1.0.tgz"
   integrity sha512-DlL+XwOy3NxAQ8xuC0okPgK46iuVNAK01YN7RueYBqqFeGsBjV9XmCAzAdgt+667bCl5kPh9EqKKDwnaPG1I7A==
-
-npm-registry-firewall@2.13.0:
-  version "2.13.0"
-  resolved "https://registry.npmjs.org/npm-registry-firewall/-/npm-registry-firewall-2.13.0.tgz"
-  integrity sha512-m7mJroILmncXfH4fXvj0iOxGHZ0KuED4xFu7I0bJPWVKR8+Kt8JZASYqmgiPtFhL8QVNAmXWtG8in4whEKmhgA==
 
 npm-run-path@^5.1.0:
   version "5.1.0"
@@ -705,7 +707,7 @@ tempy@^3.0.0:
     type-fest "^2.12.2"
     unique-string "^3.0.0"
 
-through@~2.3, through@~2.3.1, through@2:
+through@2, through@~2.3, through@~2.3.1:
   version "2.3.8"
   resolved "https://registry.npmjs.org/through/-/through-2.3.8.tgz"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
@@ -731,6 +733,11 @@ type-fest@^2.12.2:
   version "2.13.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-2.13.0.tgz"
   integrity sha512-lPfAm42MxE4/456+QyIaaVBAwgpJb6xZ8PRu09utnhPdWwcyj9vgy6Sq0Z5yNbJ21EdxB5dRU/Qg8bsyAMtlcw==
+
+undici-types@~5.26.4:
+  version "5.26.5"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
+  integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
 unique-string@^3.0.0:
   version "3.0.0"

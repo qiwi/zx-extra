@@ -19,7 +19,7 @@ ProcessOutput.prototype.toString = function () {
     : str
 }
 
-export const $ = new DeepProxy(_$, ({DEFAULT, target: t, trapName, args}) => {
+export const $ = new DeepProxy(_$, ({name, DEFAULT, target: t, trapName, args}) => {
   if (trapName === 'apply') {
     if (!t.preferLocal) {
       return DEFAULT
@@ -89,18 +89,28 @@ export const createHook = (opts, name = randomId(), cb = (v) => v, configurable)
 }
 
 const getBinVer = (bin, opt, nothrow) => {
-  const {stdout, stderr, error = stderr.toString('utf-8')} = childProcess.spawnSync(bin, [opt], {})
-  if (!nothrow && error) throw error
+  try {
+    const {stdout, stderr, error = stderr.toString('utf-8')} = childProcess.spawnSync(bin, [opt], {})
+    if (error) {
+      throw error
+    }
+    return stdout?.toString('utf-8').trim().split(' ').find(semver.valid)
+  } catch (e) {
+    if (nothrow) return
 
-  return stdout?.toString('utf-8').trim().split(' ').find(semver.valid)
+    throw e
+  }
 }
 
 export const ver = (target, range = '*') => {
   const version = (() => {
     try {
       return require(`${target}/package.json`).version
-    } catch {
-      return getBinVer(target, '--version', true) || getBinVer(target, '-v')
+    } catch (e) {
+      const v = getBinVer(target, '--version', true) || getBinVer(target, '-v', true)
+      if (v) return v
+
+      throw new Error(`${target} not found`)
     }
   })()
 
