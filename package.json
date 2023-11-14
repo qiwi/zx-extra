@@ -41,9 +41,12 @@
     "@types/node": "^20.0.0",
     "@types/semver": "^7.3.13",
     "globby-cp": "^1.1.2",
+    "ini": "^4.1.1",
     "ip": "^1.1.8",
     "is-reachable": "^5.2.1",
     "npm-run-path": "^5.1.0",
+    "semver": "^7.5.4",
+    "ssri": "^10.0.5",
     "tempy": "^3.0.0",
     "zx": "^7.1.1"
   }

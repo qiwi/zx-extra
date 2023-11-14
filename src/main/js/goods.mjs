@@ -1,5 +1,7 @@
 export * as tempy from 'tempy'
 export { default as ip } from 'ip'
 export { default as tcping } from 'is-reachable'
+export * as semver from 'semver'
+export * as SSRI from 'ssri'
+export * as INI from 'ini'
 export { copy } from 'globby-cp'
-export { semver, SSRI, INI } from './reexport.cjs'

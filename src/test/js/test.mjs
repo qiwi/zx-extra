@@ -15,6 +15,8 @@ import {
   INI
 } from '../../main/js/index.mjs'
 
+const isBun = !!process.versions.bun
+
 // $.verbose
 {
   assert($.verbose === false)
@@ -74,7 +76,7 @@ import {
   assert(ver('git').match(/^\d+\.\d+\.\d+$/))
   assert(ver('git', '>=2'))
   assert.throws(() => ver('git', '>=5'), {message: /^git@\d+\.\d+\.\d+ does not satisfy >=5$/})
-  assert.throws(() => ver('unknownbin'), {message: 'spawnSync unknownbin ENOENT'})
+  assert.throws(() => ver('unknownbin'), {message: 'unknownbin not found'})
 }
 
 // SSRI
@@ -227,14 +229,18 @@ password = dbpassword
       const temp1 = tempy.temporaryDirectory()
       const temp2 = tempy.temporaryDirectory()
       $.cwd = temp1
+      assert.equal($.cwd, temp1)
+      assert.equal($.cwd, temp1)
 
-      assert((await $`pwd`).toString().trim() === temp1)
-      assert((await $`pwd`).toString().trim() === temp1)
+      await $`pwd`
+      assert.equal((await $`pwd`).toString().trim(), temp1)
+      assert.equal($.cwd, temp1)
+      assert.equal((await $`pwd`).toString().trim(), temp1)
 
       $.cwd = temp2
-
-      assert((await $`pwd`).toString().trim() === temp2)
-      assert((await $`pwd`).toString().trim() === temp2)
+      assert.equal((await $`pwd`).toString().trim(), temp2)
+      assert.equal((await $`pwd`).toString().trim(), temp2)
+      assert.equal($.cwd, temp2)
     })
   }
 }
