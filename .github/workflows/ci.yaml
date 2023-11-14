@@ -24,7 +24,6 @@ jobs:
 
   test_pr:
     if: ${{ github.event_name == 'pull_request' }}
-    needs: init
     name: Test PR (Node v${{ matrix.node-version }}, OS ${{ matrix.os }})
     strategy:
       matrix:
