@@ -90,8 +90,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_COMMITTER_EMAIL: 'opensource@qiwi.com'
-          GIT_COMMITTER_NAME: 'qiwibot'
+          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
         run: npm_config_yes=true npx zx-semrel
         # run: |
         #  npm link
