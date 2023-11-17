@@ -15,8 +15,6 @@ import {
   INI
 } from '../../main/js/index.mjs'
 
-const isBun = !!process.versions.bun
-
 // $.verbose
 {
   assert($.verbose === false)
@@ -109,6 +107,7 @@ password = dbpassword
 
 // hooks
 {
+  const SIGNAL = 'SIGTERM'
   const nothrow = createHook({nothrow: true}, 'nothrow')
   const quiet = createHook({ verbose: 0 }, 'quiet')
   const debug = createHook({ verbose: 2 }, 'debug')
@@ -131,20 +130,20 @@ password = dbpassword
   await $`echo 'chained'`.quiet()
 
   try {
-    await nothrow(quiet(timeout(100, 'SIGKILL')`sleep 9999`))
+    await nothrow(quiet(timeout(100, SIGNAL)`sleep 9999`))
   } catch {
     console.log('killed1')
   }
 
   try {
     const p = $`sleep 9999`
-    await nothrow(quiet(timeout(100, 'SIGKILL')(p)))
+    await nothrow(quiet(timeout(100, SIGNAL)(p)))
   } catch {
     console.log('killed2')
   }
 
   try {
-    await $`sleep 9999`.timeout(100, 'SIGKILL').quiet().nothrow()
+    await $`sleep 9999`.timeout(100, SIGNAL).quiet().nothrow()
   } catch {
     console.log('killed3')
   }
