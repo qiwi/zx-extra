@@ -3,6 +3,7 @@
 
 ## Requirements
 * Node.js >= 16.0.0
+* Bun >= 1.0.12
 
 ## Install
 ```shell
