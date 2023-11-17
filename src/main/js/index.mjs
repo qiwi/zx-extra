@@ -25,8 +25,9 @@ export const $ = new DeepProxy(_$, ({name, DEFAULT, target: t, trapName, args}) 
       return DEFAULT
     }
     const env = t.env
-    t.env = {...t.env, PATH: npmRunPath({cwd: t.cwd})}
     try {
+      const PATH = npmRunPath({cwd: t.cwd})
+      t.env = {...t.env, PATH}
       return t(...args)
     } finally {
       t.env = env
