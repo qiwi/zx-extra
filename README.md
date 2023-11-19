@@ -1,6 +1,9 @@
 # 🦪 zx-extra
 > [zx](https://github.com/google/zx) with some extras
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/dee1d6ae98f929b3c44f/test_coverage)](https://codeclimate.com/github/qiwi/zx-extra/test_coverage)
+[![npm](https://img.shields.io/npm/v/zx-extra)](https://www.npmjs.com/package/zx-extra)
+
 ## Requirements
 * Node.js >= 16.0.0
 * Bun >= 1.0.12
@@ -15,7 +18,7 @@ yarn add zx-extra
 ```
 
 ## Usage
-Inherits [zx](https://github.com/google/zx), so all origin methods are available. Follow [the upstream docs](https://github.com/google/zx) for details.
+Inherits [zx](https://github.com/google/zx), so all original methods are available. Follow [the upstream docs](https://github.com/google/zx) for details.
 
 ## Extras
 
