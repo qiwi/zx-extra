@@ -7,6 +7,12 @@ jobs:
     name: Test on push
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-22.04
+    permissions:
+      checks: read
+      statuses: write
+      contents: write
+      packages: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4

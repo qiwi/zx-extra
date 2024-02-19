@@ -6,7 +6,7 @@
   "types": "./src/main/js/index.d.ts",
   "type": "module",
   "bin": {
-    "zx-extra": "./src/main/js/cli.mjs"
+    "zx-extra": "src/main/js/cli.mjs"
   },
   "scripts": {
     "test": "PATH=$(env -i bash -c 'echo $PATH') node ./src/main/js/cli.mjs ./src/test/js/test.mjs --quiet",
