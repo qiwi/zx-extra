@@ -1,3 +1,8 @@
+## [2.6.6](https://github.com/qiwi/zx-extra/compare/v2.6.5...v2.6.6) (2024-02-19)
+
+### Fixes & improvements
+* perf: ci update gh-token permissions ([285d3da](https://github.com/qiwi/zx-extra/commit/285d3da0c771d3fc558fd78f9ffc0fba92e2e53c))
+
 ## [2.6.5](https://github.com/qiwi/zx-extra/compare/v2.6.4...v2.6.5) (2024-02-19)
 
 ### Fixes & improvements
