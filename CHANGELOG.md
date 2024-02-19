@@ -1,3 +1,8 @@
+## [2.6.5](https://github.com/qiwi/zx-extra/compare/v2.6.4...v2.6.5) (2024-02-19)
+
+### Fixes & improvements
+* fix: update ip to v2.0.1 ([3f35e5b](https://github.com/qiwi/zx-extra/commit/3f35e5b86da6ab0bb85fa563b36997e77c5c9639))
+
 ## [2.6.4](https://github.com/qiwi/zx-extra/compare/v2.6.3...v2.6.4) (2023-11-15)
 
 ### Fixes & improvements
