@@ -159,14 +159,14 @@ password = dbpassword
 {
   $.verbose = 0
   try {
-    await $`ps-tree`
+    await $`semver`
   } catch (e){
     assert.ok(/command not found/.test(e.message))
   }
 
   $.preferLocal = true
 
-  await $`ps-tree`
+  await $`semver`
 
   $.preferLocal = false
   $.verbose = 2

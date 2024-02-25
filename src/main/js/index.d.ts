@@ -24,7 +24,7 @@ type Extra = {
 type Executor = Shell & BasicOptions & Extra
 
 declare module 'zx' {
-  export type Options = BasicOptions & Extra
+  export interface Options extends Extra {}
 }
 
 export function createHook(opts?: Executor, name?: string, cb?: (p: ProcessPromise) => any, configurable?: boolean)
