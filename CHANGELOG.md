@@ -1,3 +1,8 @@
+## [2.6.7](https://github.com/qiwi/zx-extra/compare/v2.6.6...v2.6.7) (2024-02-25)
+
+### Fixes & improvements
+* perf: update zx to 7.2.3-dev.7e728f6 ([f1ae311](https://github.com/qiwi/zx-extra/commit/f1ae311133666ed7830756a06a029799aa75808e))
+
 ## [2.6.6](https://github.com/qiwi/zx-extra/compare/v2.6.5...v2.6.6) (2024-02-19)
 
 ### Fixes & improvements
