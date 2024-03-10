@@ -1,3 +1,8 @@
+## [2.7.0](https://github.com/qiwi/zx-extra/compare/v2.6.8...v2.7.0) (2024-03-10)
+
+### Features
+* feat: set verbose mode via env.VERBOSE ([6b0a08e](https://github.com/qiwi/zx-extra/commit/6b0a08ed4292bf893bd7297a7d7486b870717996))
+
 ## [2.6.8](https://github.com/qiwi/zx-extra/compare/v2.6.7...v2.6.8) (2024-03-10)
 
 ### Fixes & improvements
