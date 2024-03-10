@@ -1,3 +1,8 @@
+## [2.6.8](https://github.com/qiwi/zx-extra/compare/v2.6.7...v2.6.8) (2024-03-10)
+
+### Fixes & improvements
+* fix(deps): update dependency @qiwi/deep-proxy to v3 ([57f1f94](https://github.com/qiwi/zx-extra/commit/57f1f94e6afcd50eac3dfacf7b83515ab47659f1))
+
 ## [2.6.7](https://github.com/qiwi/zx-extra/compare/v2.6.6...v2.6.7) (2024-02-25)
 
 ### Fixes & improvements
