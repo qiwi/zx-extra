@@ -1,5 +1,6 @@
 import {$ as _$, quiet, ProcessPromise, within, ProcessOutput} from 'zx'
 import childProcess from 'node:child_process'
+import process from 'node:process'
 import {isTemplateSignature, randomId} from './util.mjs'
 import {npmRunPath} from 'npm-run-path'
 import {DeepProxy} from '@qiwi/deep-proxy'
@@ -39,7 +40,7 @@ export const $ = new DeepProxy(_$, ({name, DEFAULT, target: t, trapName, args}) 
 
 export const ctx = (cb, ref = $) => within(() => cb(ref))
 
-$.verbose = false
+$.verbose = process.env.VERBOSE === 'true'
 
 $.trim = true
 
