@@ -1,3 +1,11 @@
+## [3.0.0](https://github.com/qiwi/zx-extra/compare/v2.7.0...v3.0.0) (2024-03-18)
+
+### Fixes & improvements
+* perf: up deps ([3604eba](https://github.com/qiwi/zx-extra/commit/3604ebafdf5a84c2f606b1d5d7e483914d839843))
+
+### BREAKING CHANGES
+* uses the new zx@8 core proposal ([3604eba](https://github.com/qiwi/zx-extra/commit/3604ebafdf5a84c2f606b1d5d7e483914d839843))
+
 ## [2.7.0](https://github.com/qiwi/zx-extra/compare/v2.6.8...v2.7.0) (2024-03-10)
 
 ### Features
