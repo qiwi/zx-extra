@@ -1,3 +1,8 @@
+## [3.0.3](https://github.com/qiwi/zx-extra/compare/v3.0.2...v3.0.3) (2024-04-02)
+
+### Fixes & improvements
+* fix: revert zx-extra to 7.2.3-dev.1124e31 ([f05fe07](https://github.com/qiwi/zx-extra/commit/f05fe07805ae8e312e3143971afc3da97d2e9e50))
+
 ## [3.0.2](https://github.com/qiwi/zx-extra/compare/v3.0.1...v3.0.2) (2024-04-02)
 
 ### Fixes & improvements
