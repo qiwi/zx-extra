@@ -1,3 +1,8 @@
+## [3.0.4](https://github.com/qiwi/zx-extra/compare/v3.0.3...v3.0.4) (2024-04-03)
+
+### Fixes & improvements
+* perf: update zx to v7.2.3-dev.0844b88 ([b31ad1d](https://github.com/qiwi/zx-extra/commit/b31ad1d37e4dfb1772fe4a68bc7e7b47752820fb))
+
 ## [3.0.3](https://github.com/qiwi/zx-extra/compare/v3.0.2...v3.0.3) (2024-04-02)
 
 ### Fixes & improvements
