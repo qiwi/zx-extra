@@ -12,7 +12,8 @@ import {
   fs,
   path,
   SSRI,
-  INI
+  INI,
+  ps,
 } from '../../main/js/index.mjs'
 
 // $.verbose
@@ -109,14 +110,23 @@ password = dbpassword
 {
   const SIGNAL = 'SIGTERM'
   const nothrow = createHook({nothrow: true}, 'nothrow')
-  const quiet = createHook({ verbose: 0 }, 'quiet')
+  const quiet = createHook({ verbose: 0, quiet: true }, 'quiet')
   const debug = createHook({ verbose: 2 }, 'debug')
   const timeout = createHook(
     null,
     'timeout',
     (p, t, signal) => {
       if (!t) return p
-      let timer = setTimeout(() => p.kill(signal), t)
+      let timer = setTimeout(() => {
+        (async () => {
+          const list =  await ps.tree({ pid: p.child.pid, recursive: true })
+          for (const l of list) {
+            process.kill(+l.pid)
+          }
+          process.kill(+p.child.pid, signal)
+        })()
+        // p.kill(signal)
+      }, t)
 
       p.finally(() => clearTimeout(timer))
 
