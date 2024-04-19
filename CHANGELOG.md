@@ -1,3 +1,8 @@
+## [3.0.6](https://github.com/qiwi/zx-extra/compare/v3.0.5...v3.0.6) (2024-04-19)
+
+### Fixes & improvements
+* fix(deps): update dependency zx to v8.0.2 ([2dde8b8](https://github.com/qiwi/zx-extra/commit/2dde8b87ad00e9f2014e281bb0157768f238fff1))
+
 ## [3.0.5](https://github.com/qiwi/zx-extra/compare/v3.0.4...v3.0.5) (2024-04-06)
 
 ### Fixes & improvements
