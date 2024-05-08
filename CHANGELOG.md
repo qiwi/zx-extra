@@ -1,3 +1,8 @@
+## [3.0.7](https://github.com/qiwi/zx-extra/compare/v3.0.6...v3.0.7) (2024-05-08)
+
+### Fixes & improvements
+* fix: update zx to 8.0.2-dev.b6420eb ([4ceae30](https://github.com/qiwi/zx-extra/commit/4ceae301b865ceb5d71195ac582a6b74c6d05441))
+
 ## [3.0.6](https://github.com/qiwi/zx-extra/compare/v3.0.5...v3.0.6) (2024-04-19)
 
 ### Fixes & improvements
