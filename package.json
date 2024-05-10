@@ -12,7 +12,7 @@
     "test": "PATH=$(env -i bash -c 'echo $PATH') node ./src/main/js/cli.mjs ./src/test/js/test.mjs --quiet",
     "test:cov": "c8 npm run test && c8 report -r lcov",
     "test:bun": "bun ./src/main/js/cli.mjs ./src/test/js/test.mjs --quiet",
-    "publish:byhand": "npm publish --no-git-tag-version",
+    "publish:manual": "npm publish --no-git-tag-version",
     "publish:beta": "npm publish --no-git-tag-version --tag beta",
     "publish:rc": "npm publish --no-git-tag-version --tag rc"
   },
@@ -46,8 +46,7 @@
     "ini": "^4.1.2",
     "ip": "^2.0.1",
     "is-reachable": "^5.2.1",
-    "npm-run-path": "^5.3.0",
-    "semver": "^7.6.1",
+    "semver": "^7.6.2",
     "ssri": "^10.0.6",
     "tempy": "^3.1.0",
     "zx": "8.0.2-dev.b6420eb"

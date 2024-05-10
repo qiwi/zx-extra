@@ -167,19 +167,25 @@ password = dbpassword
 
 // preferLocal
 {
+  const env = $.env
+  const PATH = env.PATH
+    .split(':')
+    .filter(p => !/\/node_modules\//.test(p))
+    .join(':')
+  $.env = {...$.env, PATH }
   $.verbose = 0
-  try {
-    await $`semver`
-  } catch (e){
-    assert.ok(/command not found/.test(e.message))
-  }
+  $.nothrow = true
+
+  const e = await $`semver`
+  assert.ok(/command not found/.test(e.message))
 
   $.preferLocal = true
-
   await $`semver`
 
   $.preferLocal = false
   $.verbose = 2
+  $.env = env
+  $.nothrow = false
 }
 
 // ip

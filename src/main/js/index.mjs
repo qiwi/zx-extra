@@ -1,9 +1,8 @@
 import {$ as _$, quiet, ProcessPromise, within, ProcessOutput} from 'zx'
 import childProcess from 'node:child_process'
 import process from 'node:process'
-import {isTemplateSignature, randomId} from './util.mjs'
-import {npmRunPath} from 'npm-run-path'
 import {DeepProxy} from '@qiwi/deep-proxy'
+import {injectNmBinToPathEnv, isTemplateSignature, randomId} from './util.mjs'
 import {semver} from './goods.mjs'
 
 export * from 'zx'
@@ -22,13 +21,11 @@ ProcessOutput.prototype.toString = function () {
 
 export const $ = new DeepProxy(_$, ({name, DEFAULT, target: t, trapName, args}) => {
   if (trapName === 'apply') {
-    if (!t.preferLocal) {
-      return DEFAULT
-    }
+    if (!t.preferLocal) return DEFAULT
+
     const env = t.env
     try {
-      const PATH = npmRunPath({cwd: t.cwd})
-      t.env = {...t.env, PATH}
+      t.env = injectNmBinToPathEnv(t.env, t.cwd)
       return t(...args)
     } finally {
       t.env = env
