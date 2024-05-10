@@ -1,3 +1,8 @@
+## [3.0.8](https://github.com/qiwi/zx-extra/compare/v3.0.7...v3.0.8) (2024-05-10)
+
+### Fixes & improvements
+* refactor: npm-run-path with own helper ([765b203](https://github.com/qiwi/zx-extra/commit/765b203803c6c60ef0494a01f8727028e155e360))
+
 ## [3.0.7](https://github.com/qiwi/zx-extra/compare/v3.0.6...v3.0.7) (2024-05-08)
 
 ### Fixes & improvements
