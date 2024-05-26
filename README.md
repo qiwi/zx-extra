@@ -18,9 +18,11 @@ yarn add zx-extra
 ```
 
 ## Usage
-Inherits [zx](https://github.com/google/zx), so all original methods are available. Follow [the upstream docs](https://github.com/google/zx) for details.
+Inherits [zx](https://github.com/google/zx), so all original methods are available. Follow [the upstream docs](https://github.com/google/zx) for details.  
 
 ## Extras
+
+~~striked text~~ marks APIs that was merged into zx core.
 
 ### `ip`
 Resolves the current IP address via [node-ip](https://github.com/indutny/node-ip).
@@ -58,7 +60,9 @@ await tcping('example.com:443') // true
 await tcping('unknown:1234')    // false
 ```
 
-### `tempy`
+### ~~`tempy`~~ 
+_deprecated_, use `tmpfile` and `tmpdir` instead: [zx#803](https://github.com/google/zx/pull/803)
+
 Creates [temp dirs and files](https://github.com/sindresorhus/tempy).
 ```js
 import {tempy} from 'zx-extra'
@@ -135,7 +139,9 @@ ctx(($) => {
 }, ref)
 ```
 
-### `$.preferLocal`
+### ~~`$.preferLocal`~~
+Landed as [zx#798](https://github.com/google/zx/pull/798)
+
 In npm run scripts you can execute locally installed binaries by name. This enables the same for zx.
 ```js
 $`terser input.js --compress ecma=2015,computed_props=false`
@@ -152,13 +158,17 @@ const output = (await $.raw`${cmd} ${msg}`).toString().trim()
 // $ echo foo bar
 ```
 
-### `$.verbose`
+### ~~`$.verbose`~~
+_Since [zx@8.0.0](https://github.com/google/zx/releases/tag/8.0.0)_
+
 Set to `false` by default.
 
 ### `$.trim`
 Applies `.trim()` to `ProcessOutput` string representation. Set `true` by default.
 
-### `$.opt`
+### ~~`$.opt`~~
+_Landed as [zx#733](https://github.com/google/zx/pull/733)_
+
 Returns `$` with the specified preset. Aliased for `$.o`.
 ```js
 const $$ = $.opt({verbose: false, spawn: customSpawn})
@@ -191,8 +201,9 @@ await $`sleep 9999`.quiet().timeout(100, 'SIGKILL')
 await quiet(timeout(100, 'SIGKILL')`sleep 9999`)
 ```
 
-### `$.silent`
-_merged as [bf88f50](bf88f5064b31dea79da4999f25425ca0fe0b8013)_    
+### ~~`$.silent`~~
+_merged as [bf88f50](bf88f5064b31dea79da4999f25425ca0fe0b8013)_
+
 Sets `verbose = false` for a single invocation.
 ```js
 await $.silent`echo foo`
