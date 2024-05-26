@@ -1,8 +1,8 @@
-import {$ as _$, quiet, ProcessPromise, within, ProcessOutput} from 'zx'
+import {$ as _$, ProcessPromise, within, ProcessOutput} from 'zx'
 import childProcess from 'node:child_process'
 import process from 'node:process'
 import {DeepProxy} from '@qiwi/deep-proxy'
-import {injectNmBinToPathEnv, isTemplateSignature, randomId} from './util.mjs'
+import {isTemplateSignature, randomId} from './util.mjs'
 import {semver} from './goods.mjs'
 
 export * from 'zx'
@@ -20,17 +20,17 @@ ProcessOutput.prototype.toString = function () {
 }
 
 export const $ = new DeepProxy(_$, ({name, DEFAULT, target: t, trapName, args}) => {
-  if (trapName === 'apply') {
-    if (!t.preferLocal) return DEFAULT
-
-    const env = t.env
-    try {
-      t.env = injectNmBinToPathEnv(t.env, t.cwd)
-      return t(...args)
-    } finally {
-      t.env = env
-    }
-  }
+  // if (trapName === 'apply') {
+  //   if (!t.preferLocal) return DEFAULT
+  //
+  //   const env = t.env
+  //   try {
+  //     t.env = injectNmBinToPathEnv(t.env, t.cwd)
+  //     return t(...args)
+  //   } finally {
+  //     t.env = env
+  //   }
+  // }
 
   return DEFAULT
 })
@@ -41,34 +41,35 @@ $.verbose = process.env.VERBOSE === 'true'
 
 $.trim = true
 
-$.raw = async (...args) => $.o({quote: v => v})(...args)
+$.raw = async (...args) => $({quote: v => v})(...args)
 
 // https://github.com/google/zx/pull/134
-$.silent = async (...args) => quiet($(...args))
+$.silent = async (...args) => $({quiet: true})(...args)
 
 // https://github.com/google/zx/blob/c73ccb468cfd2340fb296e17a543eb2399b449ec/src/core.ts#L174
 $.cwd = process.cwd()
 
-$.o = $.opt =
-  (opts) =>
-    (...args) =>
-      ctx(($) => {
-        Object.assign(_$, opts)
-        const p = $(...args)
-        if (p._snapshot.nothrow) p._nothrow = true
-        return p
-      })
+$.o = $.opt = $
+// $.o = $.opt =
+//   (opts) =>
+//     (...args) =>
+//       ctx(($) => {
+//         Object.assign(_$, opts)
+//         const p = $(...args)
+//         if (p._snapshot.nothrow) p._nothrow = true
+//         return p
+//       })
 
 export const createHook = (opts, name = randomId(), cb = (v) => v, configurable) => {
   ProcessPromise.prototype[name] = function (...args) {
     Object.assign(this._snapshot, opts)
-    if (this._snapshot.nothrow) this._nothrow = true
+    // if (this._snapshot.nothrow) this._nothrow = true
 
     return cb(this, ...args)
   }
 
   const getP = (p, opts, $args) =>
-    p instanceof ProcessPromise ? p : $.opt(opts)(...$args)
+    p instanceof ProcessPromise ? p : $(opts)(...$args)
 
   return (...args) => {
     if (!configurable) {
