@@ -1,3 +1,9 @@
+## [3.0.12](https://github.com/qiwi/zx-extra/compare/v3.0.11...v3.0.12) (2024-05-26)
+
+### Fixes & improvements
+* refactor: use zx@8 api ([94821e3](https://github.com/qiwi/zx-extra/commit/94821e37cbd16bffaaa9c31870bab9f119fa12d3))
+* docs: update API statuses ([3e2b49c](https://github.com/qiwi/zx-extra/commit/3e2b49c9a544a1da47aebba2585318f1ac251310))
+
 ## [3.0.11](https://github.com/qiwi/zx-extra/compare/v3.0.10...v3.0.11) (2024-05-23)
 
 ### Fixes & improvements
