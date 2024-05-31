@@ -1,3 +1,8 @@
+## [3.0.14](https://github.com/qiwi/zx-extra/compare/v3.0.13...v3.0.14) (2024-05-31)
+
+### Fixes & improvements
+* refactor: prepare for zx cli update ([31821b4](https://github.com/qiwi/zx-extra/commit/31821b4d291fd1c456fd0cbc2e271513c3de8448))
+
 ## [3.0.13](https://github.com/qiwi/zx-extra/compare/v3.0.12...v3.0.13) (2024-05-29)
 
 ### Fixes & improvements
