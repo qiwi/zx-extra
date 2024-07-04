@@ -40,7 +40,7 @@
   "dependencies": {
     "@qiwi/deep-proxy": "^3.0.0",
     "@types/ip": "^1.1.3",
-    "@types/node": "^20.14.6",
+    "@types/node": "^20.14.9",
     "@types/semver": "^7.5.8",
     "globby-cp": "^1.3.0",
     "ini": "^4.1.3",
@@ -49,7 +49,7 @@
     "semver": "^7.6.2",
     "ssri": "^10.0.6",
     "tempy": "^3.1.0",
-    "zx": "8.1.4-dev.a262a21"
+    "zx": "8.1.4-dev.d7d074d"
   },
   "devDependencies": {
     "c8": "^10.1.2"
