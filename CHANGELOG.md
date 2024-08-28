@@ -1,3 +1,8 @@
+## [3.0.20](https://github.com/qiwi/zx-extra/compare/v3.0.19...v3.0.20) (2024-08-28)
+
+### Fixes & improvements
+* perf: update zx to 8.1.5 dev ([183838f](https://github.com/qiwi/zx-extra/commit/183838fc54dff87e3735f043c63f8481e9a873e2))
+
 ## [3.0.19](https://github.com/qiwi/zx-extra/compare/v3.0.18...v3.0.19) (2024-07-08)
 
 ### Fixes & improvements
