@@ -1,3 +1,8 @@
+## [3.0.27](https://github.com/qiwi/zx-extra/compare/v3.0.26...v3.0.27) (2024-12-24)
+
+### Fixes & improvements
+* perf: update zx to v8.3.0 ([cfa966a](https://github.com/qiwi/zx-extra/commit/cfa966ae00b1dd33755fa970ac441043d5809225))
+
 ## [3.0.26](https://github.com/qiwi/zx-extra/compare/v3.0.25...v3.0.26) (2024-11-29)
 
 ### Fixes & improvements
