@@ -51,7 +51,7 @@
     "semver": "^7.6.3",
     "ssri": "^10.0.6",
     "tempy": "^3.1.0",
-    "zx": "8.3.1",
+    "zx": "8.3.2",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
