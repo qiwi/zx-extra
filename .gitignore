@@ -19,6 +19,7 @@ flow-typed
 lib
 target
 typings
+jsr.json
 
 # Temp assets
 .temp

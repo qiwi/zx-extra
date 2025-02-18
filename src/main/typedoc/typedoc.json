@@ -1,0 +1,15 @@
+{
+  "name": "zx-extra",
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "includeVersion": false,
+  "hideGenerator": true,
+  "tsconfig": "../../../tsconfig.json",
+  "theme": "default",
+  "entryPoints": ["../../main/ts/"],
+  "exclude": ["../../test", "**/node_modules/**"],
+  "externalPattern": ["**/node_modules/**"],
+  "out": "../../../target/docs",
+  "readme": "../../../README.md"
+}
