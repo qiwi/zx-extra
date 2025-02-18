@@ -2,24 +2,35 @@
   "name": "zx-extra",
   "version": "3.0.29",
   "description": "zx with some useful extras",
-  "main": "./src/main/js/index.mjs",
-  "types": "./src/main/js/index.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./target/dts/index.d.ts",
+      "import": "./target/esm/index.mjs",
+      "default": "./target/esm/index.mjs"
+    }
+  },
   "bin": {
     "zx-extra": "src/main/js/cli.mjs"
   },
   "scripts": {
-    "build": "echo 'No build required' && exit 0",
-    "build:js": "tsc --project tsconfig.json --outDir ./target/js",
-    "test": "PATH=$(env -i bash -c 'echo $PATH') node ./src/main/js/cli.mjs ./src/test/js/test.mjs --quiet",
+    "build": "concurrently 'npm:build:*'",
+    "build:js": "node ./src/scripts/build.mjs --entry='./src/main/ts/index.ts:./src/main/ts/cli.ts' --format='mjs'",
+    "build:jsr": "node ./src/scripts/build-jsr.mjs",
+    "build:dts": "tsc --emitDeclarationOnly --outDir target/dts",
+    "build:docs": "typedoc --options src/main/typedoc",
+    "test": "concurrently 'npm:test:js' 'npm:test:ts' 'npm:test:jsr'",
+    "test:js": "PATH=$(env -i bash -c 'echo $PATH') node ./target/esm/cli.mjs ./src/test/js/test.mjs --quiet",
+    "test:ts": "node --experimental-strip-types ./src/test/ts/index.test.ts",
     "test:cov": "c8 npm run test && c8 report -r lcov",
     "test:bun": "bun ./src/main/js/cli.mjs ./src/test/js/test.mjs --quiet",
+    "test:jsr": "jsr publish --dry-run",
     "publish:manual": "npm publish --no-git-tag-version",
     "publish:beta": "npm publish --no-git-tag-version --tag beta",
     "publish:rc": "npm publish --no-git-tag-version --tag rc"
   },
   "files": [
-    "src/main",
+    "target",
     "README.md",
     "LICENSE"
   ],
@@ -40,21 +51,31 @@
   },
   "homepage": "https://github.com/qiwi/zx-extra#readme",
   "dependencies": {
-    "@qiwi/deep-proxy": "^3.0.0",
+    "@types/ini": "^4.1.1",
     "@types/ip": "^1.1.3",
-    "@types/node": "^22.10.2",
     "@types/semver": "^7.5.8",
+    "@types/ssri": "^7.1.5",
     "globby-cp": "^1.3.0",
     "ini": "^4.1.3",
     "ip": "^2.0.1",
     "is-reachable": "^5.2.1",
-    "semver": "^7.6.3",
-    "ssri": "^10.0.6",
+    "semver": "^7.7.1",
+    "ssri": "^12.0.0",
     "tempy": "^3.1.0",
-    "zx": "8.3.2",
-    "typescript": "^5.7.2"
+    "zx": "8.3.2"
   },
   "devDependencies": {
-    "c8": "^10.1.3"
+    "@types/node": "^22.13.4",
+    "c8": "^10.1.3",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.25.0",
+    "esbuild-node-externals": "^1.18.0",
+    "esbuild-plugin-entry-chunks": "^0.1.15",
+    "esbuild-plugin-extract-helpers": "^0.0.6",
+    "esbuild-plugin-transform-hook": "^0.2.0",
+    "fast-glob": "^3.3.3",
+    "jsr": "^0.13.3",
+    "typedoc": "^0.27.7",
+    "typescript": "^5.7.3"
   }
 }

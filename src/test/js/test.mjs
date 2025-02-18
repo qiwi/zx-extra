@@ -14,7 +14,7 @@ import {
   SSRI,
   INI,
   ps,
-} from '../../main/js/index.mjs'
+} from '../../../target/esm/index.mjs'
 
 // $.verbose
 {
@@ -119,11 +119,11 @@ password = dbpassword
       if (!t) return p
       let timer = setTimeout(() => {
         (async () => {
-          const list =  await ps.tree({ pid: p.child.pid, recursive: true })
+          const list =  await ps.tree({ pid: p.pid, recursive: true })
           for (const l of list) {
             process.kill(+l.pid)
           }
-          process.kill(+p.child.pid, signal)
+          process.kill(p.pid, signal)
         })()
         // p.kill(signal)
       }, t)
@@ -161,7 +161,7 @@ password = dbpassword
   try {
     timeout`echo 'foo'`
   } catch (e) {
-    assert(e.message.startsWith('Configurable hook requires options'))
+    assert.ok(e.message.startsWith('Configurable hook requires options'))
   }
 }
 
