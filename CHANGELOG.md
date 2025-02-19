@@ -1,3 +1,11 @@
+## [4.0.0](https://github.com/qiwi/zx-extra/compare/v3.0.29...v4.0.0) (2025-02-19)
+
+### Fixes & improvements
+* refactor: migrate to TS & esbuild ([17c78d8](https://github.com/qiwi/zx-extra/commit/17c78d807f5f273ec39b07df99952fdd26516cb0))
+
+### BREAKING CHANGES
+* significant bundles enhancements ([17c78d8](https://github.com/qiwi/zx-extra/commit/17c78d807f5f273ec39b07df99952fdd26516cb0))
+
 ## [3.0.29](https://github.com/qiwi/zx-extra/compare/v3.0.28...v3.0.29) (2025-02-07)
 
 ### Fixes & improvements
