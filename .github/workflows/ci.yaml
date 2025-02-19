@@ -22,11 +22,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install deps
         run: npm i
+
+      - name: Build
+        run: npm run build
 
       - name: Run tests
         run: npm run test:cov
@@ -74,6 +77,9 @@ jobs:
       - name: Install deps
         run: npm i
 
+      - name: Build
+        run: npm run build
+
       - if: matrix.os == 'windows-2019'
         run: npm i -g npm
 
@@ -92,9 +98,10 @@ jobs:
       - name: Setup Bun
         uses: antongolub/action-setup-bun@v1
 
-      - name: Deps
+      - name: Install & build
         run: |
           bun install
+          bun run build
           ln -s ../ ./node_modules/zx-extra
 
       - name: Run tests
