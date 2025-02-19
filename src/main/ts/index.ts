@@ -1,4 +1,4 @@
-import {$ as _$, ProcessPromise, within, ProcessOutput, Options} from 'zx'
+import {$ as _$, ProcessPromise, within, ProcessOutput, type Options, fs} from 'zx'
 import childProcess from 'node:child_process'
 import process from 'node:process'
 import {isTemplateSignature, randomId} from './util.ts'
@@ -96,7 +96,7 @@ const getBinVer = (bin: string, opt: string, nothrow?: boolean) => {
 export const ver = (target: string, range = '*'): string => {
   const version = (() => {
     try {
-      return require(`${target}/package.json`).version
+      return fs.readJsonSync(require.resolve(`${target}/package.json`)).version
     } catch (e) {
       const v = getBinVer(target, '--version', true) || getBinVer(target, '-v', true)
       if (v) return v
