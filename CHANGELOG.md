@@ -1,3 +1,8 @@
+## [4.0.1](https://github.com/qiwi/zx-extra/compare/v4.0.0...v4.0.1) (2025-02-19)
+
+### Fixes & improvements
+* fix(deps): update dependency ini to v5 ([0fe432b](https://github.com/qiwi/zx-extra/commit/0fe432b00358e71ee1c55293911445630e2047c2))
+
 ## [4.0.0](https://github.com/qiwi/zx-extra/compare/v3.0.29...v4.0.0) (2025-02-19)
 
 ### Fixes & improvements
