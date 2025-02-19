@@ -1,3 +1,8 @@
+## [4.0.2](https://github.com/qiwi/zx-extra/compare/v4.0.1...v4.0.2) (2025-02-19)
+
+### Fixes & improvements
+* perf: enable jsr publish ([4bb6d89](https://github.com/qiwi/zx-extra/commit/4bb6d8935dbb3ca026a9bbfd585ef37f5802f3d7))
+
 ## [4.0.1](https://github.com/qiwi/zx-extra/compare/v4.0.0...v4.0.1) (2025-02-19)
 
 ### Fixes & improvements
