@@ -19,7 +19,7 @@
     "build:jsr": "node ./src/scripts/build-jsr.mjs",
     "build:dts": "tsc --emitDeclarationOnly --outDir target/dts",
     "build:docs": "typedoc --options src/main/typedoc",
-    "test": "concurrently 'npm:test:js' 'npm:test:jsr'",
+    "test": "concurrently 'npm:test:js' 'npm:test:ts' 'npm:test:jsr'",
     "test:js": "PATH=$(env -i bash -c 'echo $PATH') node ./target/esm/cli.mjs ./src/test/js/test.mjs --quiet",
     "test:ts": "node --experimental-strip-types ./src/test/ts/index.test.ts",
     "test:cov": "c8 npm run test && c8 report -r lcov",

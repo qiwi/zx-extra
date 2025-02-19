@@ -3,8 +3,29 @@
 name: CI
 on: [push, pull_request]
 jobs:
-  test_push:
-    name: Test on push
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: |
+            target
+            package.json
+            jsr.json
+          retention-days: 1
+
+  push:
+    name: Push ${{ github.ref }}
+    needs: build
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-24.04
     permissions:
@@ -26,10 +47,11 @@ jobs:
           cache: 'npm'
 
       - name: Install deps
-        run: npm i
+        run: npm ci
 
-      - name: Build
-        run: npm run build
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
 
       - name: Run tests
         run: npm run test:cov
@@ -48,6 +70,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_PROVENANCE: true
+          GIT_BRANCH: 'master'
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
           GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
@@ -57,6 +80,7 @@ jobs:
 
   pr_node:
     if: ${{ github.event_name == 'pull_request' }}
+    needs: build
     name: Test PR (Node v${{ matrix.node-version }}, OS ${{ matrix.os }})
     strategy:
       matrix:
@@ -67,6 +91,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ github.ref == 'refs/heads/master' && '0' || '1' }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -74,11 +100,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Install deps
-        run: npm i
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
 
-      - name: Build
-        run: npm run build
+      - name: Install deps
+        run: npm ci
 
       - if: matrix.os == 'windows-2019'
         run: npm i -g npm
@@ -89,6 +116,7 @@ jobs:
 
   pr_bun:
     if: ${{ github.event_name == 'pull_request' }}
+    needs: build
     runs-on: ubuntu-24.04
     name: PR with Bun
     steps:
@@ -98,10 +126,13 @@ jobs:
       - name: Setup Bun
         uses: antongolub/action-setup-bun@v1
 
-      - name: Install & build
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
+
+      - name: Install
         run: |
           bun install
-          bun run build
           ln -s ../ ./node_modules/zx-extra
 
       - name: Run tests
