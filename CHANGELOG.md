@@ -1,3 +1,8 @@
+## [4.0.4](https://github.com/qiwi/zx-extra/compare/v4.0.3...v4.0.4) (2025-02-19)
+
+### Fixes & improvements
+* refactor: rm dynamic imports ([395211c](https://github.com/qiwi/zx-extra/commit/395211c6204126b6954fbe15d0c6ade4880ca3f5))
+
 ## [4.0.3](https://github.com/qiwi/zx-extra/compare/v4.0.2...v4.0.3) (2025-02-19)
 
 ### Fixes & improvements
