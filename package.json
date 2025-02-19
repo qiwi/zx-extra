@@ -28,7 +28,7 @@
     "publish:manual": "npm publish --no-git-tag-version",
     "publish:beta": "npm publish --no-git-tag-version --tag beta",
     "publish:rc": "npm publish --no-git-tag-version --tag rc",
-    "postrelease": "node src/scripts/build-jsr.mjs && jsr publish"
+    "postrelease": "node src/scripts/build-jsr.mjs && jsr publish --allow-dirty"
   },
   "files": [
     "target",
