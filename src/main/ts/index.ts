@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 import {$ as _$, ProcessPromise, within, ProcessOutput, type Options, fs} from 'zx'
 import childProcess from 'node:child_process'
 import process from 'node:process'
