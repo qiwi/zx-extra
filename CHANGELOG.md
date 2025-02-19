@@ -1,3 +1,8 @@
+## [4.0.3](https://github.com/qiwi/zx-extra/compare/v4.0.2...v4.0.3) (2025-02-19)
+
+### Fixes & improvements
+* perf: tech release ([e24a3a0](https://github.com/qiwi/zx-extra/commit/e24a3a058696b32e8f82e9f5cd4975aebd4017e5))
+
 ## [4.0.2](https://github.com/qiwi/zx-extra/compare/v4.0.1...v4.0.2) (2025-02-19)
 
 ### Fixes & improvements
