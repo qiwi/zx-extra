@@ -56,7 +56,7 @@ interface HookProcess extends ProcessPromise {
 export function createHook <Callback extends HookCallback, O extends HookOptions>(opts: O, name: string, cb: Callback, configurable: false): (pieces: TemplateStringsArray | HookOptions, ...args: any) => ReturnType<Callback>
 export function createHook <Callback extends HookCallback, O extends HookOptions>(opts: O, name: string, cb: Callback, configurable: true): (...args: DropFirst<Parameters<Callback>>) => (pieces: TemplateStringsArray | HookOptions, ...args: any) => ReturnType<Callback>
 export function createHook <Callback extends HookCallback, O extends HookOptions>(opts: O, name = randomId(), cb?: Callback, configurable?: boolean) {
-  (ProcessPromise.prototype as any)[name] = function (this: HookProcess, ...args: any[]): ReturnType<Callback> {
+  (ProcessPromise.prototype as any)[name] = function (this: HookProcess, ...args: any[]): ReturnType<Callback> | HookProcess {
     Object.assign((this as any)._snapshot, opts)
     return cb ? cb.apply(this, [this, ...args]) : this
   }
