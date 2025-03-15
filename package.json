@@ -76,7 +76,7 @@
     "esbuild-plugin-transform-hook": "^0.2.0",
     "fast-glob": "^3.3.3",
     "jsr": "^0.13.3",
-    "typedoc": "^0.27.7",
+    "typedoc": "^0.28.0",
     "typescript": "^5.7.3"
   }
 }
