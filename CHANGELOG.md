@@ -1,3 +1,9 @@
+## [4.0.6](https://github.com/qiwi/zx-extra/compare/v4.0.5...v4.0.6) (2025-04-19)
+
+### Fixes & improvements
+* perf: up zx to v8.5.3 ([3c89f8d](https://github.com/qiwi/zx-extra/commit/3c89f8d1406b7f24a99eb4ca4cb83f1bb186b57d))
+* perf(deps): up zx to v8.4.0 ([e0367ed](https://github.com/qiwi/zx-extra/commit/e0367ed55bdea24a49940b536917d0e5c9fd048f))
+
 ## [4.0.5](https://github.com/qiwi/zx-extra/compare/v4.0.4...v4.0.5) (2025-02-19)
 
 ### Fixes & improvements
