@@ -110,9 +110,15 @@ jobs:
       - if: matrix.os == 'windows-2019'
         run: npm i -g npm
 
-      - name: Run tests
+      - name: Run all tests
         timeout-minutes: 2
+        if: matrix.node-version == '22'
         run: npm test
+
+      - name: Run js tests
+        timeout-minutes: 2
+        if: matrix.node-version != '22'
+        run: npm run test:js
 
   pr_bun:
     if: ${{ github.event_name == 'pull_request' }}
