@@ -1,3 +1,8 @@
+## [4.0.7](https://github.com/qiwi/zx-extra/compare/v4.0.6...v4.0.7) (2025-06-04)
+
+### Fixes & improvements
+* fix(deps): update dependency zx to v8.5.5 ([d4a7ff8](https://github.com/qiwi/zx-extra/commit/d4a7ff80db4690220e5def239eb7cd9274560236))
+
 ## [4.0.6](https://github.com/qiwi/zx-extra/compare/v4.0.5...v4.0.6) (2025-04-19)
 
 ### Fixes & improvements
