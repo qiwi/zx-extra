@@ -1,3 +1,8 @@
+## [4.0.12](https://github.com/qiwi/zx-extra/compare/v4.0.11...v4.0.12) (2025-08-21)
+
+### Fixes & improvements
+* perf: up deps ([87660a2](https://github.com/qiwi/zx-extra/commit/87660a222a945c84b64efd4f61ffac61d628a32e))
+
 ## [4.0.11](https://github.com/qiwi/zx-extra/compare/v4.0.10...v4.0.11) (2025-07-14)
 
 ### Fixes & improvements
