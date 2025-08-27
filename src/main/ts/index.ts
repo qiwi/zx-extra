@@ -1,6 +1,6 @@
 /// <reference types="node" />
 
-import {$ as _$, ProcessPromise, within, ProcessOutput, type Options, fs} from 'zx'
+import {$ as _$, type $ as Zx, ProcessPromise, within, ProcessOutput, type Options, fs} from 'zx'
 import childProcess from 'node:child_process'
 import process from 'node:process'
 import {isTemplateSignature, randomId} from './util.ts'
@@ -26,7 +26,6 @@ export function ctx <C extends Callback>(cb: C, ref = $): ReturnType<C> {
   return within<ReturnType<C>>(() => cb(ref))
 }
 
-type Zx = typeof _$
 type Extra = {
   trim?:  boolean
   raw:    Zx
@@ -84,9 +83,8 @@ export function createHook <Callback extends HookCallback, O extends HookOptions
 const getBinVer = (bin: string, opt: string, nothrow?: boolean) => {
   try {
     const {stdout, stderr, error = stderr.toString('utf-8')} = childProcess.spawnSync(bin, [opt], {})
-    if (error) {
-      throw error
-    }
+    if (error) throw error
+
     return stdout?.toString('utf-8').trim().split(' ').find(v => semver.valid(v))
   } catch (e) {
     if (nothrow) return
