@@ -1,5 +1,5 @@
 export * as tempy from 'tempy'
-export { default as ip } from 'ip'
+export { ip } from './ip.ts'
 export { default as tcping } from 'is-reachable'
 export * as semver from 'semver'
 export * as SSRI from 'ssri'

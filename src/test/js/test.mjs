@@ -1,6 +1,8 @@
 import {strict as assert} from 'node:assert'
+import ipa from 'ip-address'
 import {
   $,
+  argv,
   semver,
   ver,
   ctx,
@@ -15,6 +17,8 @@ import {
   INI,
   ps,
 } from '../../../target/esm/index.mjs'
+
+console.log(ipa.address())
 
 // $.verbose
 {
