@@ -7,6 +7,7 @@
  * 4. Exposed both strict and relaxed ipv4/ipv6 patterns
  * 5. (?) Strict mode for `fromLong()`
  * 6. Stricter `toString()` with buffer length check
+ * 7. Improved fromPrefixLen() family hint
  *
  * @module ip2
  */
@@ -68,6 +69,9 @@ export const fromLong = (n: number): string =>
     (n >>> 8) & 0xff,
     n & 0xff
   ].join('.')
+
+export const toLong = (ip: string): number =>
+  ip.split('.').reduce((acc, octet) => (acc << 8) + Number(octet), 0) >>> 0
 
 export const toString = (buff: Buffer, offset = 0, length?: number): string => {
   const o = ~~offset
@@ -132,4 +136,89 @@ export const toBuffer = (ip: string, buff?: Buffer, offset = 0): Buffer => {
   }
 
   throw Error(`Invalid ip address: ${ip}`)
+}
+
+export const fromPrefixLen = (prefixlen: number, family?: string | number): string => {
+  family = prefixlen > 32 ? 'ipv6' : normalizeFamily(family)
+  const buff = Buffer.alloc(family === 'ipv6' ? 16 : 4)
+
+  for (let i = 0; i < buff.length; i++) {
+    const bits = Math.min(prefixlen, 8)
+    prefixlen -= bits
+    buff[i] = ~(0xff >> bits) & 0xff
+  }
+
+  return toString(buff)
+}
+
+export const mask = (addr: string, maskStr: string): string => {
+  const a = toBuffer(addr)
+  const m = toBuffer(maskStr)
+  const out = Buffer.alloc(Math.max(a.length, m.length))
+
+  if (a.length === m.length) {
+    // Same protocol → direct AND
+    for (let i = 0; i < a.length; i++) out[i] = a[i] & m[i]
+  } else if (m.length === 4) {
+    // IPv6 addr with IPv4 mask → apply to low 32 bits
+    for (let i = 0; i < 4; i++) out[i] = a[a.length - 4 + i] & m[i]
+  } else {
+    // IPv4 addr with IPv6 mask → expand to ::ffff:ipv4
+    out.fill(0, 0, 10)
+    out[10] = out[11] = 0xff
+    for (let i = 0; i < a.length; i++) out[i + 12] = a[i] & m[i + 12]
+  }
+
+  return toString(out)
+}
+
+export const cidr = (cidrString: string): string => {
+  const [addr, prefix] = cidrString.split('/')
+
+  if (!addr || prefix === undefined)
+    throw new Error(`invalid CIDR subnet: ${cidrString}`)
+
+  const m = fromPrefixLen(parseInt(prefix, 10))
+  return mask(addr, m)
+}
+
+export const subnet = (addr: string, smask: string) => {
+  const networkAddress = toLong(mask(addr, smask))
+
+  // calculate prefix length
+  const maskBuffer = toBuffer(smask)
+  let maskLength = 0
+  for (const byte of maskBuffer) {
+    if (byte === 0xff) {
+      maskLength += 8
+    } else {
+      let b = byte
+      while (b) {
+        b = (b << 1) & 0xff
+        maskLength++
+      }
+    }
+  }
+
+  const numAddresses = 2 ** (32 - maskLength)
+  const firstAddress =
+    numAddresses <= 2 ? networkAddress : networkAddress + 1
+  const lastAddress =
+    numAddresses <= 2
+      ? networkAddress + numAddresses - 1
+      : networkAddress + numAddresses - 2
+
+  return {
+    networkAddress:   fromLong(networkAddress),
+    firstAddress:     fromLong(firstAddress),
+    lastAddress:      fromLong(lastAddress),
+    broadcastAddress: fromLong(networkAddress + numAddresses - 1),
+    subnetMask:       smask,
+    subnetMaskLength: maskLength,
+    numHosts:         numAddresses <= 2 ? numAddresses : numAddresses - 2,
+    length:           numAddresses,
+    contains(other: string): boolean {
+      return networkAddress === toLong(mask(other, smask))
+    },
+  }
 }

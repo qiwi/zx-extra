@@ -12,8 +12,12 @@ import {
   isV6,
   isLoopback,
   fromLong,
+  fromPrefixLen,
   toBuffer,
   toString,
+  mask,
+  cidr,
+  subnet,
 } from '../../main/ts/ip2.ts'
 import {Buffer} from "buffer";
 
@@ -104,12 +108,12 @@ describe('ip', () => {
     const cases: [string, Buffer | undefined, number | undefined, number | undefined, string, string?][] = [
       ['127.0.0.1', u, u, u, '7f000001'],
       ['::ffff:127.0.0.1', u, u, u, '00000000000000000000ffff7f000001', '::ffff:7f00:1'],
-      ['127.0.0.1', new Buffer(128), 64, 4, '0'.repeat(128) + '7f000001' + '0'.repeat(120)],
+      ['127.0.0.1', Buffer.alloc(128), 64, 4, '0'.repeat(128) + '7f000001' + '0'.repeat(120)],
       ['::1', u, u, u, '00000000000000000000000000000001'],
       ['1::', u, u, u, '00010000000000000000000000000000'],
       ['abcd::dcba', u, u, u, 'abcd000000000000000000000000dcba'],
-      ['::1', new Buffer(128), 64, 16, '0'.repeat(128 + 31) + '1' + '0'.repeat(128 - 32)],
-      ['abcd::dcba', new Buffer(128), 64, 16, '0'.repeat(128) + 'abcd000000000000000000000000dcba' + '0'.repeat(128 - 32)],
+      ['::1', Buffer.alloc(128), 64, 16, '0'.repeat(128 + 31) + '1' + '0'.repeat(128 - 32)],
+      ['abcd::dcba', Buffer.alloc(128), 64, 16, '0'.repeat(128) + 'abcd000000000000000000000000dcba' + '0'.repeat(128 - 32)],
       ['::ffff:127.0.0.1', u, u, u, '00000000000000000000ffff7f000001', '::ffff:7f00:1'],
       ['ffff::127.0.0.1', u, u, u, 'ffff000000000000000000007f000001', 'ffff::7f00:1'],
       ['0:0:0:0:0:ffff:127.0.0.1', u, u, u, '00000000000000000000ffff7f000001', '::ffff:7f00:1'],
@@ -124,9 +128,77 @@ describe('ip', () => {
     }
   })
 
-  // test('toString()/', () => {
-  //   const cases: [string, string][] = [
-  //     ['7f000001', '
-  //   ]
-  // })
+  test('fromPrefixLen()', () => {
+    const cases: [number, string, (string | number)?][] = [
+      [24, '255.255.255.0'],
+      [64, 'ffff:ffff:ffff:ffff::'],
+      [24, 'ffff:ff00::', 'IPV6'],
+    ]
+
+    for (const [input, expected, family] of cases) {
+      const res = fromPrefixLen(input, family)
+      assert.strictEqual(res, expected, `fromPrefixLen(${input}, ${family}) === ${expected}`)
+    }
+  })
+
+  test('mask()', () => {
+    const cases: [string, string, string][] = [
+      ['192.168.1.134', '255.255.255.0', '192.168.1.0'],
+      ['192.168.1.134', '::ffff:ff00', '::ffff:c0a8:100'],
+      ['::1', '0.0.0.0', '::']
+    ]
+
+    for (const [a, m, expected] of cases) {
+      const res = mask(a, m)
+      assert.strictEqual(res, expected, `mask(${a}, ${m}) === ${expected}`)
+    }
+  })
+
+  test('cidr()', () => {
+    const cases: [string, string][] = [
+      ['192.168.1.134/26', '192.168.1.128'],
+      ['2607:f0d0:1002:51::4/56', '2607:f0d0:1002::']
+    ]
+
+    for (const [input, expected] of cases) {
+      const res = cidr(input)
+      assert.strictEqual(res, expected, `cidr(${input}) === ${expected}`)
+    }
+
+    assert.throws(() => cidr(''), /Error: invalid CIDR subnet/)
+  })
+
+  test('subnet()', () => {
+    const cases: [string, string, Record<string, any>, string[], string[]][] = [
+      ['192.168.1.134', '255.255.255.192', {
+        networkAddress: '192.168.1.128',
+        firstAddress:   '192.168.1.129',
+        lastAddress:    '192.168.1.190',
+        broadcastAddress: '192.168.1.191',
+        subnetMask:     '255.255.255.192',
+        subnetMaskLength: 26,
+        numHosts:      62,
+        length:        64,
+      }, ['192.168.1.180'], ['192.168.1.192']],
+
+      ['192.168.1.134', '255.255.255.255', {
+        firstAddress: '192.168.1.134',
+        lastAddress:  '192.168.1.134',
+        numHosts: 1
+      }, ['192.168.1.134'], []],
+      ['192.168.1.134', '255.255.255.254', {
+        firstAddress: '192.168.1.134',
+        lastAddress:  '192.168.1.135',
+        numHosts: 2
+      }, [], []]
+    ]
+    for (const [addr, smask, expected, inside, out] of cases) {
+      const res = subnet(addr, smask)
+      for (const k of Object.keys(expected))
+        assert.strictEqual(res[k as keyof typeof res], expected[k], `subnet(${addr}, ${smask}).${k} === ${expected[k]}`)
+
+      assert.ok(inside.every(a => res.contains(a)), `subnet(${addr}, ${smask}) contains ${inside.join(', ')}`)
+      assert.ok(out.every(a => !res.contains(a)), `subnet(${addr}, ${smask}) does not contain ${out.join(', ')}`)
+    }
+  })
 })
