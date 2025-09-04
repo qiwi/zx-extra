@@ -12,7 +12,10 @@ import {
   isV6,
   isLoopback,
   fromLong,
+  toBuffer,
+  toString,
 } from '../../main/ts/ip2.ts'
+import {Buffer} from "buffer";
 
 describe('ip', () => {
   test('normalizeFamily() normalizes input to enum', () => {
@@ -95,4 +98,35 @@ describe('ip', () => {
       assert.equal(fromLong(input), expected, `fromLong(${input}) === ${expected}`)
     }
   })
+
+  test('toBuffer()/toString()', () => {
+    const u = undefined
+    const cases: [string, Buffer | undefined, number | undefined, number | undefined, string, string?][] = [
+      ['127.0.0.1', u, u, u, '7f000001'],
+      ['::ffff:127.0.0.1', u, u, u, '00000000000000000000ffff7f000001', '::ffff:7f00:1'],
+      ['127.0.0.1', new Buffer(128), 64, 4, '0'.repeat(128) + '7f000001' + '0'.repeat(120)],
+      ['::1', u, u, u, '00000000000000000000000000000001'],
+      ['1::', u, u, u, '00010000000000000000000000000000'],
+      ['abcd::dcba', u, u, u, 'abcd000000000000000000000000dcba'],
+      ['::1', new Buffer(128), 64, 16, '0'.repeat(128 + 31) + '1' + '0'.repeat(128 - 32)],
+      ['abcd::dcba', new Buffer(128), 64, 16, '0'.repeat(128) + 'abcd000000000000000000000000dcba' + '0'.repeat(128 - 32)],
+      ['::ffff:127.0.0.1', u, u, u, '00000000000000000000ffff7f000001', '::ffff:7f00:1'],
+      ['ffff::127.0.0.1', u, u, u, 'ffff000000000000000000007f000001', 'ffff::7f00:1'],
+      ['0:0:0:0:0:ffff:127.0.0.1', u, u, u, '00000000000000000000ffff7f000001', '::ffff:7f00:1'],
+    ]
+    for (const [input, b, o, l, h, s = input] of cases) {
+      const buf = toBuffer(input, b, o)
+      const str = toString(buf, o, l)
+      const hex = buf.toString('hex')
+
+      assert.equal(hex, h, `toBuffer(${input}).toString('hex') === ${h}`)
+      assert.equal(str, s, `toString(toBuffer(${input})) === ${s}`)
+    }
+  })
+
+  // test('toString()/', () => {
+  //   const cases: [string, string][] = [
+  //     ['7f000001', '
+  //   ]
+  // })
 })
