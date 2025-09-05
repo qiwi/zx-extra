@@ -32,7 +32,8 @@
     "postrelease": "node src/scripts/build-jsr.mjs && jsr publish --allow-dirty"
   },
   "files": [
-    "target",
+    "target/dts",
+    "target/esm",
     "README.md",
     "LICENSE"
   ],
