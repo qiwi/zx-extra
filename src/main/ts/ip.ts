@@ -21,10 +21,10 @@ export const V6_RE = /^(::)?(((\d{1,3}\.){3}(\d{1,3}){1})?([0-9a-f]){0,4}:{0,2})
 export const V4_S_RE = /^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/
 export const V6_S_RE = /(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/
 
-export const isV4Format = (ip: string)=> V4_RE.test(ip) // Legacy
-export const isV6Format = (ip: string)=> V6_RE.test(ip) // Legacy
-export const isV4 = (ip: string)=> V4_S_RE.test(ip)
-export const isV6 = (ip: string)=> V6_S_RE.test(ip)
+export const isV4Format = (ip: string): boolean => V4_RE.test(ip) // Legacy
+export const isV6Format = (ip: string): boolean => V6_RE.test(ip) // Legacy
+export const isV4 = (ip: string): boolean => V4_S_RE.test(ip)
+export const isV6 = (ip: string): boolean => V6_S_RE.test(ip)
 
 // Corresponds Nodejs.NetworkInterfaceBase
 export type Family = typeof IPV4 | typeof IPV6
@@ -87,7 +87,7 @@ export const normalizeToLong = (addr: string): number => {
 const V4_LB = '127.0.0.1'
 const V6_LB = 'fe80::1'
 
-export const isLoopback = (addr: string | number) => {
+export const isLoopback = (addr: string | number): boolean => {
   const a = normalizeAddress(addr)
   const s = a.slice(0, 5)
 
@@ -223,7 +223,19 @@ export const mask = (addr: string, maskStr: string): string => {
   return toString(out)
 }
 
-export const subnet = (addr: string, smask: string) => {
+type Subnet = {
+  networkAddress: string
+  firstAddress: string
+  lastAddress: string
+  broadcastAddress: string
+  subnetMask: string
+  subnetMaskLength: number
+  numHosts: number
+  length: number
+  contains(ip: string): boolean
+}
+
+export const subnet = (addr: string, smask: string): Subnet => {
   const networkAddress = toLong(mask(addr, smask))
 
   // calculate prefix length
