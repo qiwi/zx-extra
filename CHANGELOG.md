@@ -1,3 +1,8 @@
+## [4.0.14](https://github.com/qiwi/zx-extra/compare/v4.0.13...v4.0.14) (2025-09-05)
+
+### Fixes & improvements
+* fix: exclude `docs` dir from pkg assets ([e0dfe71](https://github.com/qiwi/zx-extra/commit/e0dfe71341c0f240c6dbefe2595a44229de289ff))
+
 ## [4.0.13](https://github.com/qiwi/zx-extra/compare/v4.0.12...v4.0.13) (2025-09-05)
 
 ### Fixes & improvements
