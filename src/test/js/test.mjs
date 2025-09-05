@@ -1,5 +1,4 @@
 import {strict as assert} from 'node:assert'
-import ipa from 'ip-address'
 import {
   $,
   argv,
@@ -18,7 +17,6 @@ import {
   ps,
 } from '../../../target/esm/index.mjs'
 
-console.log(ipa.address())
 
 // $.verbose
 {
@@ -194,7 +192,7 @@ password = dbpassword
 
 // ip
 {
-  assert(/(\d+\.){3}\d+/.test(ip.address()))
+  assert(/^(\d+\.){3}\d+$/.test(ip.address()))
 }
 
 // tempy

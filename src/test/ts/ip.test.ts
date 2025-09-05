@@ -1,7 +1,13 @@
+import os from 'node:os'
+import net from 'node:net'
+import {Buffer} from 'node:buffer'
 import assert from 'node:assert'
 import {test, describe} from 'node:test'
+
 import {
   normalizeFamily,
+  IPV4,
+  IPV6,
   V4_RE,
   V6_RE,
   V4_S_RE,
@@ -11,28 +17,37 @@ import {
   isV4,
   isV6,
   isLoopback,
+  isEqual,
+  isPrivate,
+  isPublic,
   fromLong,
   fromPrefixLen,
   toBuffer,
   toString,
+  toLong,
   mask,
-  cidr,
   subnet,
-} from '../../main/ts/ip2.ts'
-import {Buffer} from "buffer";
+  cidr,
+  cidrSubnet,
+  or,
+  not,
+  address,
+  addresses,
+} from '../../main/ts/ip.ts'
 
 describe('ip', () => {
   test('normalizeFamily() normalizes input to enum', () => {
     const cases: [any, string][] = [
-      [4, 'ipv4'],
-      ['4', 'ipv4'],
-      ['ipv4', 'ipv4'],
-      [6, 'ipv6'],
-      ['6', 'ipv6'],
-      ['ipv6', 'ipv6'],
-      [undefined, 'ipv4'],
-      [null, 'ipv4'],
-      ['', 'ipv4'],
+      [4, IPV4],
+      ['4', IPV4],
+      ['ipv4', IPV4],
+      ['iPV4', IPV4],
+      [6, IPV6],
+      ['6', IPV6],
+      ['ipv6', IPV6],
+      [undefined, IPV4],
+      [null, IPV4],
+      ['', IPV4],
     ]
     for (const [input, expected] of cases) {
       const result = normalizeFamily(input)
@@ -83,8 +98,17 @@ describe('ip', () => {
       ['::1', true],
       ['::', true],
       ['128.0.0.1'],
+      ['8.8.8.8'],
       [2130706434, true],
-      [4294967295]
+      [4294967295],
+      ['0177.0.0.1', true],
+      ['0177.0.1', true],
+      ['0177.1', true],
+      ['0x7f.0.0.1', true],
+      ['0x7f.0.1', true],
+      ['0x7f.1', true],
+      ['2130706433', true],
+      ['192.168.1.1', false],
     ]
 
     for (const [input, expected] of cases) {
@@ -100,6 +124,17 @@ describe('ip', () => {
 
     for (const [input, expected] of cases) {
       assert.equal(fromLong(input), expected, `fromLong(${input}) === ${expected}`)
+    }
+  })
+
+  test('toLong()', () => {
+    const cases: [string, number][] = [
+      ['127.0.0.1', 2130706433],
+      ['255.255.255.255', 4294967295]
+    ]
+
+    for (const [input, expected] of cases) {
+      assert.equal(toLong(input), expected, `toLong(${input}) === ${expected}`)
     }
   })
 
@@ -132,7 +167,7 @@ describe('ip', () => {
     const cases: [number, string, (string | number)?][] = [
       [24, '255.255.255.0'],
       [64, 'ffff:ffff:ffff:ffff::'],
-      [24, 'ffff:ff00::', 'IPV6'],
+      [24, 'ffff:ff00::', 'ipv6'],
     ]
 
     for (const [input, expected, family] of cases) {
@@ -152,20 +187,6 @@ describe('ip', () => {
       const res = mask(a, m)
       assert.strictEqual(res, expected, `mask(${a}, ${m}) === ${expected}`)
     }
-  })
-
-  test('cidr()', () => {
-    const cases: [string, string][] = [
-      ['192.168.1.134/26', '192.168.1.128'],
-      ['2607:f0d0:1002:51::4/56', '2607:f0d0:1002::']
-    ]
-
-    for (const [input, expected] of cases) {
-      const res = cidr(input)
-      assert.strictEqual(res, expected, `cidr(${input}) === ${expected}`)
-    }
-
-    assert.throws(() => cidr(''), /Error: invalid CIDR subnet/)
   })
 
   test('subnet()', () => {
@@ -200,5 +221,175 @@ describe('ip', () => {
       assert.ok(inside.every(a => res.contains(a)), `subnet(${addr}, ${smask}) contains ${inside.join(', ')}`)
       assert.ok(out.every(a => !res.contains(a)), `subnet(${addr}, ${smask}) does not contain ${out.join(', ')}`)
     }
+  })
+
+
+  test('cidr()', () => {
+    const cases: [string, string][] = [
+      ['192.168.1.134/26', '192.168.1.128'],
+      ['2607:f0d0:1002:51::4/56', '2607:f0d0:1002::']
+    ]
+
+    for (const [input, expected] of cases) {
+      const res = cidr(input)
+      assert.strictEqual(res, expected, `cidr(${input}) === ${expected}`)
+    }
+
+    assert.throws(() => cidr(''), /Error: invalid CIDR subnet/)
+  })
+
+  test('cidrSubnet()', () => {
+    const cases: [string, Record<string, any>][] = [
+      ['192.168.1.134/26', {
+        networkAddress: '192.168.1.128',
+        firstAddress:   '192.168.1.129',
+        lastAddress:    '192.168.1.190',
+        broadcastAddress: '192.168.1.191',
+        subnetMask:     '255.255.255.192',
+        subnetMaskLength: 26,
+        numHosts:      62,
+        length:        64,
+      }],
+    ]
+
+    for (const [input, expected] of cases) {
+      const res = cidrSubnet(input)
+      for (const k of Object.keys(expected))
+        assert.strictEqual(res[k as keyof typeof res], expected[k], `cidrSubnet(${input}).${k} === ${expected[k]}`)
+    }
+
+    assert.throws(() => cidrSubnet(''), /Error: invalid CIDR subnet/)
+  })
+
+  test('or()', () => {
+    const cases : [string, string, string][] = [
+      ['0.0.0.255', '192.168.1.10', '192.168.1.255'],
+      ['::ff', '::1', '::ff'],
+      ['::ff', '::abcd:dcba:abcd:dcba', '::abcd:dcba:abcd:dcff'],
+      ['0.0.0.255', '::abcd:dcba:abcd:dcba', '::abcd:dcba:abcd:dcff'],
+    ]
+
+    for (const [a, b, expected] of cases)
+      assert.strictEqual(or(a, b), expected, `or(${a}, ${b}) === ${expected}`)
+  })
+
+  test('not()', () => {
+    const cases: [string, string][] = [
+      ['255.255.255.0', '0.0.0.255'],
+      ['255.0.0.0',  '0.255.255.255'],
+      ['1.2.3.4', '254.253.252.251'],
+      ['::', 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'],
+      ['::ffff:ffff', 'ffff:ffff:ffff:ffff:ffff:ffff::'],
+      ['::abcd:dcba:abcd:dcba', 'ffff:ffff:ffff:ffff:5432:2345:5432:2345']
+    ]
+
+    for (const [a, expected] of cases)
+      assert.strictEqual(not(a), expected, `not(${a}) === ${expected}`)
+  })
+
+  test('isEqual()', () => {
+    const cases: [string, string, boolean][] = [
+      ['127.0.0.1', '::7f00:1', true],
+      ['127.0.0.1', '::7f00:2', false],
+      ['127.0.0.1', '::ffff:7f00:1', true],
+      ['127.0.0.1', '::ffaf:7f00:1', false],
+      ['::ffff:127.0.0.1', '::ffff:127.0.0.1', true],
+      ['::ffff:127.0.0.1', '127.0.0.1', true],
+    ]
+
+    for (const [a, b, expected] of cases)
+      assert.equal(isEqual(a, b), expected, `isEqual(${a}, ${b}) === ${expected}`)
+  })
+
+  test('isPrivate()/isPublic()', () => {
+    const cases: [string, boolean?][] = [
+      ['127.0.0.1', true],
+      ['127.0.0.2', true],
+      ['127.1.1.1', true],
+
+      ['192.168.0.123', true],
+      ['192.168.122.123', true],
+      ['192.162.1.2'],
+
+      ['172.16.0.5', true],
+      ['172.16.123.254', true],
+      ['171.16.0.5'],
+      ['172.25.232.15', true],
+      ['172.15.0.5'],
+      ['172.32.0.5'],
+
+      ['169.254.2.3', true],
+      ['169.254.221.9', true],
+      ['168.254.2.3'],
+
+      ['10.0.2.3', true],
+      ['10.1.23.45', true],
+      ['12.1.2.3'],
+
+      ['fd12:3456:789a:1::1', true],
+      ['fe80::f2de:f1ff:fe3f:307e', true],
+      ['::ffff:10.100.1.42', true],
+      ['::FFFF:172.16.200.1', true],
+      ['::ffff:192.168.0.1', true],
+
+      ['165.225.132.33'],
+
+      ['::', true],
+      ['::1', true],
+      ['fe80::1', true],
+
+      // CVE-2023-42282
+      ['0x7f.1', true],
+
+      // CVE-2024-29415
+      ['127.1', true],
+      ['2130706433', true],
+      ['01200034567', false],
+      ['012.1.2.3', false],
+      ['000:0:0000::01', true],
+      ['::fFFf:127.0.0.1', true],
+      ['::fFFf:127.255.255.256', true]
+    ]
+
+    for (const [input, expected] of cases) {
+      assert.equal(isPrivate(input), !!expected, `isPrivate(${input}) === ${!!expected}`)
+      assert.equal(isPublic(input), !expected, `isPublic(${input}) === ${!expected}`)
+    }
+  })
+
+  describe('address()', () => {
+    test('private', () => {
+      const cases = [undefined, 'ipv4', 'ipv6']
+
+      for (const family of cases) {
+        const addr = address('private', family)!
+        assert.ok(isPrivate(addr), `address('private', ${family}) === ${addr}`)
+      }
+    })
+
+    describe('net ifaces', () => {
+      const interfaces = os.networkInterfaces()
+      const cases: [string | undefined, (addr: string) => boolean][] = [
+        [undefined, net.isIPv4],
+        ['ipv4', net.isIPv4],
+        ['ipv6', net.isIPv6],
+      ]
+
+      Object.keys(interfaces).forEach((nic) => {
+        for (const [family, check] of cases) {
+          test(`${nic} ${family}`, () => {
+            const addr = address(nic, family)
+            assert.ok(!addr || check(addr), `address(${nic}, ${family}) === ${addr}`)
+          })
+        }
+      })
+    })
+
+    test('`addresses()` method returns all ipv4 by default', () => {
+      const all = addresses()
+      const v4 = addresses(undefined, 'ipv4')
+
+      assert.deepEqual(all, v4)
+    })
   })
 })
