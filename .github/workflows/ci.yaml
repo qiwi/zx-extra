@@ -56,14 +56,14 @@ jobs:
       - name: Run tests
         run: npm run test:cov
 
-      - name: Codeclimate
-        if: github.ref == 'refs/heads/master'
-        uses: paambaati/codeclimate-action@v9.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageLocations: |
-            ${{github.workspace}}/coverage/lcov.info:lcov
+#      - name: Codeclimate
+#        if: github.ref == 'refs/heads/master'
+#        uses: paambaati/codeclimate-action@v9.0.0
+#        env:
+#          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+#        with:
+#          coverageLocations: |
+#            ${{github.workspace}}/coverage/lcov.info:lcov
 
       - name: Semantic Release
         if: github.ref == 'refs/heads/master'
