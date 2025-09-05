@@ -73,7 +73,7 @@ import {
 
 // ver
 {
-  assert(ver('ip').match(/^2\.\d+\.\d+$/))
+  assert(ver('semver').match(/^7\.\d+\.\d+$/))
   assert(ver('git').match(/^\d+\.\d+\.\d+$/))
   assert(ver('git', '>=2'))
   assert.throws(() => ver('git', '>=5'), {message: /^git@\d+\.\d+\.\d+ does not satisfy >=5$/})

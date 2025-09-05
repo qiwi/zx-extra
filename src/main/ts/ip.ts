@@ -287,7 +287,7 @@ const parseCidr = (cidrString: string): [string, string] => {
 export const cidr = (cidrString: string): string =>
   mask(...parseCidr(cidrString))
 
-export const cidrSubnet = (cidrString: string) =>
+export const cidrSubnet = (cidrString: string): Subnet =>
   subnet(...parseCidr(cidrString))
 
 export const not = (addr: string): string => {
