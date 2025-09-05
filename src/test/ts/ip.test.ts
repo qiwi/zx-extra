@@ -66,6 +66,7 @@ describe('ip', () => {
     ])
 
     const cases: [string, ...Check[]][] = [
+      [''],
       ['10.0.0.1', isV4Format, isV6Format, isV4],
       ['10.0.0.256', isV4Format, isV6Format],
       ['10.00.0.255', isV4Format, isV6Format],
