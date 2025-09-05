@@ -1,3 +1,9 @@
+## [4.0.13](https://github.com/qiwi/zx-extra/compare/v4.0.12...v4.0.13) (2025-09-05)
+
+### Fixes & improvements
+* fix: enhance regexps ([049da7b](https://github.com/qiwi/zx-extra/commit/049da7bdff6b5fe2cfda39e3e226325d06f22814))
+* refactor: replace `ip` dep with own implementation ([01f1a5d](https://github.com/qiwi/zx-extra/commit/01f1a5d9913eec64daa353eef1c7781acc5f553d))
+
 ## [4.0.12](https://github.com/qiwi/zx-extra/compare/v4.0.11...v4.0.12) (2025-08-21)
 
 ### Fixes & improvements
