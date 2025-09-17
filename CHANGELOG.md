@@ -1,3 +1,8 @@
+## [4.0.15](https://github.com/qiwi/zx-extra/compare/v4.0.14...v4.0.15) (2025-09-17)
+
+### Fixes & improvements
+* perf: replace custom ip utils with `@webpod/ip` ([bbd70f0](https://github.com/qiwi/zx-extra/commit/bbd70f071182b8adc7a5f19ac7f70739d9633575))
+
 ## [4.0.14](https://github.com/qiwi/zx-extra/compare/v4.0.13...v4.0.14) (2025-09-05)
 
 ### Fixes & improvements
