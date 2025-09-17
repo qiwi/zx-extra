@@ -1,5 +1,5 @@
 export * as tempy from 'tempy'
-export { ip } from './ip.ts'
+export { ip } from '@webpod/ip'
 export { default as tcping } from 'is-reachable'
 export * as semver from 'semver'
 export * as SSRI from 'ssri'
