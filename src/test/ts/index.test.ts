@@ -2,8 +2,6 @@ import {strict as assert} from 'node:assert'
 import {$, createHook, ProcessPromise} from 'zx-extra'
 import {test, describe} from 'node:test'
 
-import './ip.test.ts'
-
 describe('createHook()', () => {
   test('applies hook as mixin', async () => {
     const h1 = createHook({foo: 'bar'}, 'foo', function (p: ProcessPromise, param: string) {
