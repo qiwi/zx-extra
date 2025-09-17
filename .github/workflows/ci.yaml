@@ -82,6 +82,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_PROVENANCE: true
           GIT_BRANCH: 'master'
+          GH_USER: 'qiwibot'
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
           GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
@@ -92,7 +93,7 @@ jobs:
       - name: Push docs
         if: github.ref == 'refs/heads/master'
         run: |
-          npx ggcp '**/*' https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git/gh-pages --cwd=${{ github.workspace }}/target/docs --message='chore: update docs'
+          npx ggcp '**/*' https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git/gh-pages --cwd=${{ github.workspace }}/target/docs --message='chore: update docs'
 
   pr_node:
     if: ${{ github.event_name == 'pull_request' }}
