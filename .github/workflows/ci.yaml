@@ -2,6 +2,14 @@
 # If the tests pass and this is a push to the master branch it also runs Semantic Release.
 name: CI
 on: [push, pull_request]
+
+env:
+  npm_config_yes: true
+  npm_config_audit: false
+  npm_config_fund: false
+  npm_config_save: false
+  npm_config_package_lock: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -76,7 +84,12 @@ jobs:
           GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
           GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
-        run: npm_config_yes=true npx zx-semrel
+        run: npx zx-semrel
+
+      - name: Push docs
+        if: github.ref == 'refs/heads/master'
+        run: |
+          npx ggcp '**/*' https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git/gh-pages --cwd=${{ github.workspace }}/target/docs --message='chore: update docs'
 
   pr_node:
     if: ${{ github.event_name == 'pull_request' }}
