@@ -1,6 +1,6 @@
 {
   "name": "zx-extra",
-  "version": "4.0.15",
+  "version": "4.0.16",
   "description": "zx with some useful extras",
   "type": "module",
   "exports": {
