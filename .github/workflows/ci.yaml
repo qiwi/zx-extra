@@ -90,10 +90,10 @@ jobs:
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
         run: npx zx-semrel
 
-      - name: Push docs
-        if: github.ref == 'refs/heads/master'
-        run: |
-          npx ggcp '**/*' https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git/gh-pages --cwd=${{ github.workspace }}/target/docs --message='chore: update docs'
+#      - name: Push docs
+#        if: github.ref == 'refs/heads/master'
+#        run: |
+#          npx ggcp '**/*' https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git/gh-pages --cwd=${{ github.workspace }}/target/docs --message='chore: update docs'
 
   pr_node:
     if: ${{ github.event_name == 'pull_request' }}

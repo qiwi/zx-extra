@@ -58,7 +58,7 @@
     "@types/semver": "^7.7.1",
     "@types/ssri": "^7.1.5",
     "@webpod/ip": "^0.4.2",
-    "globby-cp": "^1.4.1",
+    "globby-cp": "^1.4.2",
     "ini": "^5.0.0",
     "ip-address": "^10.0.1",
     "is-reachable": "^5.2.1",
