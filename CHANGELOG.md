@@ -1,3 +1,8 @@
+## [4.0.17](https://github.com/qiwi/zx-extra/compare/v4.0.16...v4.0.17) (2025-09-19)
+
+### Fixes & improvements
+* perf: update globby-cp to v1.4.2 ([b6967be](https://github.com/qiwi/zx-extra/commit/b6967be695f464845968d42adc5eccbbbfd26864))
+
 ## [4.0.16](https://github.com/qiwi/zx-extra/compare/v4.0.15...v4.0.16) (2025-09-18)
 
 ### Fixes & improvements
