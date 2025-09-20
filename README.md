@@ -25,7 +25,7 @@ Inherits [zx](https://github.com/google/zx), so all original methods are availab
 ~~striked text~~ marks APIs that was merged into zx core.
 
 ### `ip`
-Resolves the current IP address via [node-ip](https://github.com/indutny/node-ip).
+IP utils provided by [@webpod/ip](https://github.com/webpod/ip).
 ```js
 import {ip} from 'zx-extra'
 
