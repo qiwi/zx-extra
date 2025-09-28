@@ -1,3 +1,8 @@
+## [4.0.19](https://github.com/qiwi/zx-extra/compare/v4.0.18...v4.0.19) (2025-09-28)
+
+### Fixes & improvements
+* fix(deps): update dependency @webpod/ip to ^0.5.0 ([90b93a9](https://github.com/qiwi/zx-extra/commit/90b93a9ee9a925fb221ffbc8c12e0fee04a0cc5e))
+
 ## [4.0.18](https://github.com/qiwi/zx-extra/compare/v4.0.17...v4.0.18) (2025-09-27)
 
 ### Fixes & improvements
