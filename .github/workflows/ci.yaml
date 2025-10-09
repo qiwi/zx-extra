@@ -60,7 +60,7 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: build
 
@@ -120,7 +120,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: build
 
@@ -154,7 +154,7 @@ jobs:
       - name: Setup Bun
         uses: antongolub/action-setup-bun@v1
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: build
 
