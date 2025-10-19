@@ -60,7 +60,7 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: build
 
@@ -96,7 +96,7 @@ jobs:
           GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
         run: |
-          npx ggcp '**/*' https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git/gh-pages --cwd=${{ github.workspace }}/target/docs --message='chore: update docs'
+          npx ggcp 'target/docs>**/*' https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git/gh-pages --message='chore: update docs'
 
   pr_node:
     if: ${{ github.event_name == 'pull_request' }}
@@ -120,7 +120,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: build
 
@@ -154,7 +154,7 @@ jobs:
       - name: Setup Bun
         uses: antongolub/action-setup-bun@v1
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: build
 
