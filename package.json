@@ -59,7 +59,7 @@
     "@types/ssri": "^7.1.5",
     "@webpod/ip": "^0.6.1",
     "globby-cp": "^1.4.5",
-    "ini": "^5.0.0",
+    "ini": "^6.0.0",
     "ip-address": "^10.0.1",
     "is-reachable": "^5.2.1",
     "semver": "^7.7.3",
