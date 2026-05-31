@@ -75,7 +75,7 @@
     "esbuild": "^0.25.11",
     "esbuild-node-externals": "^1.18.0",
     "esbuild-plugin-entry-chunks": "^0.1.17",
-    "esbuild-plugin-extract-helpers": "^0.0.6",
+    "esbuild-plugin-extract-helpers": "^0.0.10",
     "esbuild-plugin-transform-hook": "^0.2.0",
     "fast-glob": "^3.3.3",
     "jsr": "^0.13.5",
