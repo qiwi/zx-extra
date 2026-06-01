@@ -78,7 +78,7 @@
     "esbuild-plugin-extract-helpers": "^0.0.6",
     "esbuild-plugin-transform-hook": "^0.2.0",
     "fast-glob": "^3.3.3",
-    "jsr": "^0.13.5",
+    "jsr": "^0.14.0",
     "typedoc": "^0.28.14",
     "typescript": "^5.9.3"
   }
